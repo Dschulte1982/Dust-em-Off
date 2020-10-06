@@ -1,1 +1,100 @@
 /* TODO Add site wide styles */
+
+/* Nav Bar CSS */
+
+#landing-page-nav-list {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+}
+
+#landing-page-login-button {
+    color: white;
+    background: none;
+    border: none;
+}
+
+#landing-page-signup-button {
+    background-color: #205A94;
+    color: white;
+}
+
+/* The Modal (background) */
+.nav-bar-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content */
+  .nav-bar-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+
+  /* The Close Button */
+  .modal-close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .modal-close:hover,
+  .modal-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+
+/* Landing Page CSS */
+
+#main-content-container {
+    font-family: "Montserrat", sans-serif;
+    background-image: url('./images/main-content-background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 960px;
+    max-height: 960px;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+#main-content-body-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+#main-content-header-1 {
+
+}
+
+#main-content-header-2 {
+    color: white;
+    font-family: "Monarcha", sans-serif;
+    font-weight: 700;
+}
+
+#main-content-button {
+    max-width: 150px;
+    width: 100%;
+    background: transparent;
+    padding: 10px;
+    border-color: blue;
+}
