@@ -20,6 +20,7 @@
 }
 
 /* The Modal (background) */
+
 .nav-bar-modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -36,19 +37,44 @@
 
   /* Modal Content */
   .nav-bar-modal-content {
+    display: flex;
+    flex-direction: column;
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 30%;
+    height: 30%;
+  }
+
+  #nav-bar-login-form {
+      display: flex;
+      flex-direction: column;
+  }
+
+  #login-form-username, #login-form-password {
+      width: 100%;
+      max-width: 200px;
+      align-self: center;
+  }
+
+  #login-form-header {
+      align-self: center;
+  }
+
+  #login-form-button {
+      width: 100%;
+      max-width: 100px;
+      align-self: center;
   }
 
   /* The Close Button */
   .modal-close {
     color: #aaaaaa;
-    float: right;
-    font-size: 28px;
+    padding-right: 2%;
+    font-size: 40px;
     font-weight: bold;
+    align-self: flex-end;
   }
 
   .modal-close:hover,

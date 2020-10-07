@@ -20,6 +20,7 @@ def login():
                              sha256_crypt.verify(data.password, User.password)).one()
     if user:
         session["userId"] = user.id
+        session["username"] = user.username
         session["userEmail"] = user.email
         session["userFirstName"] = user.firstName
         session["userLastName"] = user.lastName

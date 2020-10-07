@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { login, logout } from '../store/authReducer';
+import { userActions } from '../actions/userActions';
+// import { login, logout } from '../store/authReducer';
 
 export default function NavBar(props) {
     const [inputs, setInputs] = useState({
@@ -11,12 +11,14 @@ export default function NavBar(props) {
     });
     const [submitted, setSubmitted] = useState(false);
     const {username, password} = inputs;
+    const loggingIn = useSelector(state => state.auth.loggingIn)
+    const location = useLocation();
 
     const dispatch = useDispatch();
 
     // Sets the login status to default
     useEffect(() => {
-        dispatch(logout());
+        dispatch(userActions.logout());
     }, []);
 
 
@@ -42,8 +44,8 @@ export default function NavBar(props) {
 
         setSubmitted(true);
         if (username && password) {
-            console.log(username, password)
-            dispatch(login(username, password))
+            const { from } = location.state || { from: { pathname: "/test" } };
+            dispatch(userActions.login(username, password, from))
         }
     }
 
@@ -64,8 +66,9 @@ export default function NavBar(props) {
           </ul>
           <div id="myModal" className="nav-bar-modal">
             <div className="nav-bar-modal-content">
-              <span className="modal-close" onClick={closeModal}>&times;</span>
+              <div className="modal-close" onClick={closeModal}>&times;</div>
               <form id="nav-bar-login-form" onSubmit={handleSubmit}>
+                <span id="login-form-header">Account Login</span>
                 <input
                  id="login-form-username"
                  type="text"
@@ -85,6 +88,7 @@ export default function NavBar(props) {
                 <button
                  id="login-form-button"
                  type="submit">
+                     {loggingIn && <span className="spinner" />}
                      Login
                  </button>
               </form>
