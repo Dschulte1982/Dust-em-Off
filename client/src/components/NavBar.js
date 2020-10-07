@@ -13,8 +13,6 @@ export default function NavBar(props) {
     const [user, setUser] = useState({
         username: '',
         email: '',
-        firstName: '',
-        lastName: '',
         password: ''
     });
 
@@ -80,8 +78,8 @@ export default function NavBar(props) {
         e.preventDefault();
 
         setSubmitted(true);
-        if (user.username && user.email && user.firstName && user.lastName && user.password) {
-            console.log(user.username, user.email, user.firstName, user.lastName)
+        if (user.username && user.email && user.password) {
+            dispatch(userActions.register(user));
         }
     }
 
@@ -153,22 +151,6 @@ export default function NavBar(props) {
                   value={user.email}
                   onChange={handleChange}
                 />
-                {/* <input
-                  id="register-form-firstname"
-                  type="text"
-                  name="firstName"
-                  placeholder="First Name"
-                  value={user.firstName}
-                  onChange={handleChange}
-                />
-                <input
-                  id="register-form-lastname"
-                  type="text"
-                  name="lastName"
-                  placeholder="Last Name"
-                  value={user.lastName}
-                  onChange={handleChange}
-                /> */}
                 <input
                   id="register-form-password"
                   type="password"

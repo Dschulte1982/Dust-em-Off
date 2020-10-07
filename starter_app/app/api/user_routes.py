@@ -22,10 +22,8 @@ def login():
         session["userId"] = user.id
         session["username"] = user.username
         session["userEmail"] = user.email
-        session["userFirstName"] = user.firstName
-        session["userLastName"] = user.lastName
-        return {"id": str(user.id), "username": str(user.username), "email": str(user.email),
-                "firstName": str(user.firstName), "lastName": str(user.lastName)}
+        return {"id": str(user.id), "username": str(user.username),
+                "email": str(user.email),}
     return {"error": "User Not Found"}
 
 
@@ -35,3 +33,22 @@ def logout():
         session.pop('userId', None)
         return {'msg': 'successfully logged out'}
     return {"error": "User already logged out"}
+
+
+@user_routes.route('/register', methods=["POST"])
+def register():
+    data = request.json
+    print(data["user"]["username"])
+    user = User.query.filter(User.username == data["user"]["username"]).first()
+    if user:
+        return {"error": "This user already exists."}
+    if (len(data["user"]["password"]) < 8):
+        return {"error": "Password must be at least 8 characters in length."}
+    elif data:
+        registerUser = User(username=data["user"]["username"],
+                            email=data["user"]["email"],
+                            password=sha256_crypt.hash(data["user"]["password"]))
+        db.session.add(registerUser)
+        db.session.commit()
+        createdUser = User.query.filter(User.username == data["user"]["username"]).first()
+        return {"id": createdUser.id, "username": createdUser.username}
