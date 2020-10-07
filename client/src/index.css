@@ -1,22 +1,47 @@
 /* TODO Add site wide styles */
 
+a:link, a:visited {
+    text-decoration: none;
+    color: white;
+}
+
 /* Nav Bar CSS */
 
 #landing-page-nav-list {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-between; */
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: center;
+    width: 100%;
+    padding-top: 1%;
+}
+
+#landing-page-logo {
+    margin-left: 3%;
+    color: white;
+    font-family: "Monarcha", sans-serif;
+    font-size: 24px;
 }
 
 #landing-page-login-button {
     color: white;
     background: none;
     border: none;
+    font-size: 22px;
+    margin-left: auto;
+    margin-right: 2%;
 }
 
 #landing-page-signup-button {
     background-color: #205A94;
     color: white;
+    font-size: 22px;
+    margin-right: 5%;
+    border-radius: 5px;
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    max-width: 150px;
 }
 
 /* The Modal (background) */
@@ -33,10 +58,10 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
+}
 
-  /* Modal Content */
-  .nav-bar-modal-content {
+/* Login Modal Content */
+.nav-bar-modal-content {
     display: flex;
     flex-direction: column;
     background-color: #fefefe;
@@ -44,46 +69,207 @@
     padding: 20px;
     border: 1px solid #888;
     width: 30%;
-    height: 30%;
-  }
+    height: 400px;
+}
 
-  #nav-bar-login-form {
-      display: flex;
-      flex-direction: column;
-  }
+#nav-bar-login-form {
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+}
 
-  #login-form-username, #login-form-password {
-      width: 100%;
-      max-width: 200px;
-      align-self: center;
-  }
+#login-form-username, #login-form-password {
+    width: 100%;
+    height: 30px;
+    max-width: 200px;
+    align-self: center;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin: 10px 0px 0px 0px;
+    font-family: inherit;
+    text-align: center;
+    font-size: 16px;
+}
 
-  #login-form-header {
-      align-self: center;
-  }
+#login-form-username:focus, #login-form-password:focus {
+    outline: none;
+}
 
-  #login-form-button {
-      width: 100%;
-      max-width: 100px;
-      align-self: center;
-  }
+#login-form-username::placeholder, #login-form-password::placeholder {
+    text-align: center;
+    font-family: inherit;
+    padding-bottom: 15px;
+}
+
+#login-form-header {
+    align-self: center;
+    font-family: "Monarcha", sans-serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+#register-now-header {
+    margin-top: 5%;
+    align-self: center;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+#register-now-button {
+    align-self: center;
+    width: 100%;
+    max-width: 120px;
+    margin-top: 10px;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    font-size: 15px;
+    color: #205A94;
+    font-family: inherit;
+}
+
+#login-form-button {
+    width: 100%;
+    max-width: 150px;
+    align-self: center;
+    margin-top: 20px;
+    background: none;
+    color: #205A94;
+    border-color: #205A94;
+    border-radius: 4px;
+    outline-color: #205A94;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: inherit;
+}
+
+#login-form-button:hover {
+    background-color: #205A94;
+    color: white;
+}
 
   /* The Close Button */
-  .modal-close {
+.modal-close {
     color: #aaaaaa;
     padding-right: 2%;
     font-size: 40px;
     font-weight: bold;
     align-self: flex-end;
-  }
+}
 
-  .modal-close:hover,
-  .modal-close:focus {
+.modal-close:hover,
+.modal-close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-  }
+}
 
+/* Login Modal Content */
+.nav-bar-modal-content {
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    height: 400px;
+}
+
+#nav-bar-register-form {
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+}
+
+#register-form-username,
+#register-form-email,
+#register-form-firstname,
+#register-form-lastname,
+#register-form-password {
+    width: 100%;
+    height: 30px;
+    max-width: 200px;
+    align-self: center;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin: 10px 0px 0px 0px;
+    font-family: inherit;
+    text-align: center;
+    font-size: 16px;
+}
+
+#register-form-username:focus,
+#register-form-email:focus,
+#register-form-firstname:focus,
+#register-form-lastname:focus,
+#register-form-password:focus {
+    outline: none;
+}
+
+#register-form-username::placeholder,
+#register-form-email::placeholder,
+#register-form-firstname::placeholder,
+#register-form-lastname::placeholder,
+#register-form-password::placeholder {
+    text-align: center;
+    font-family: inherit;
+    padding-bottom: 15px;
+}
+
+#register-form-header {
+    align-self: center;
+    font-family: "Monarcha", sans-serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+#login-now-header {
+    margin-top: 5%;
+    align-self: center;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+#login-now-button {
+    align-self: center;
+    width: 100%;
+    max-width: 120px;
+    margin-top: 10px;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    font-size: 15px;
+    color: #205A94;
+    font-family: inherit;
+}
+
+#login-now-button:hover {
+
+}
+
+#register-form-button {
+    width: 100%;
+    height: 30px;
+    max-width: 150px;
+    align-self: center;
+    margin-top: 20px;
+    background: none;
+    color: #205A94;
+    border-color: #205A94;
+    border-radius: 4px;
+    outline-color: #205A94;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: inherit;
+}
+
+#register-form-button:hover {
+    background-color: #205A94;
+    color: white;
+}
 
 
 /* Landing Page CSS */
