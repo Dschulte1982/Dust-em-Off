@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, Redirect, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../actions/userActions';
-// import { login, logout } from '../store/authReducer';
 
 export default function NavBar(props) {
+
+    props = {"props": "test"}
     const [inputs, setInputs] = useState({
         username: '',
         password: ''
@@ -50,6 +51,7 @@ export default function NavBar(props) {
         const modal = document.getElementById("register-modal");
         loginModal.style.display = "none";
         modal.style.display = "block";
+        console.log(props)
     }
 
     const closeRegisterModal = (e) => {
@@ -69,7 +71,7 @@ export default function NavBar(props) {
 
         setSubmitted(true);
         if (username && password) {
-            const { from } = location.state || { from: { pathname: "/" } };
+            const { from } = location.state || { from: { pathname: "/home" } };
             dispatch(userActions.login(username, password, from))
         }
     }

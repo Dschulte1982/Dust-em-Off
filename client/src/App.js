@@ -1,19 +1,41 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Router, Redirect, NavLink } from 'react-router-dom';
+import { connect, useDispatch } from 'react-redux';
 import LandingPage from './components/LandingPage';
+import HomePage from './components/HomePage';
 import UsersList from './components/UsersList';
+import { history } from './helpers/history';
 
+
+// const isLoggedIn = () => {
+//     return localStorage.getItem()
+// }
+
+const protectedRoute = ({ component: Component, loggedIn, ...rest }) => {
+    if (loggedIn) return <Route {...rest} component={Component} />;
+    else return <Redirect to="/landing" />;
+  };
+  const mapStateToProps = (state) => {
+    return { loggedIn: !!state.auth.loggedIn };
+  };
+
+  const ConnectedProtectedRoute = connect(mapStateToProps, null)(protectedRoute);
 
 function App() {
-  console.log("____Rendering app_____")
   return (
-    <BrowserRouter>
+    <Router history={history}>
         <Switch>
-            <Route exact path="/landing" component={LandingPage}></Route>
-            {/* <Route exact path="/login" component={Login} /> */}
-            <Route exact path="/text" component={UsersList} />
+            <ConnectedProtectedRoute
+                exact path="/home"
+                component={HomePage}
+            ></ConnectedProtectedRoute>
+            <Route
+                exact path="/landing"
+                render={(props) => <LandingPage {...props}></LandingPage>}>
+            </Route>
+            <Route path="/text" component={UsersList} />
         </Switch>
-    </BrowserRouter>
+    </Router>
   );
 }
 
