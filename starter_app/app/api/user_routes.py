@@ -23,7 +23,7 @@ def login():
         session["username"] = user.username
         session["userEmail"] = user.email
         return {"id": str(user.id), "username": str(user.username),
-                "email": str(user.email),}
+                "email": str(user.email)}
     return {"error": "User Not Found"}
 
 
@@ -31,7 +31,7 @@ def login():
 def logout():
     if "userId" in session:
         session.pop('userId', None)
-        return {'msg': 'successfully logged out'}
+        return {'msg': 'Successfully logged out'}
     return {"error": "User already logged out"}
 
 

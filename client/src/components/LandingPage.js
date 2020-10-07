@@ -1,10 +1,11 @@
 import React from 'react';
 import { main_body } from '../content/content';
 import NavBar from '../components/NavBar';
+import { withRouter } from 'react-router-dom';
 
 
 
-export default function LandingPage(props) {
+function LandingPage(props) {
   return (
       <div id="main-content-container">
         <nav>{NavBar()}</nav>
@@ -17,4 +18,6 @@ export default function LandingPage(props) {
         </div>
       </div>
     )
-}
+};
+
+export default withRouter(LandingPage);
