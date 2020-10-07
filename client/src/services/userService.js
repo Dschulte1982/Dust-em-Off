@@ -33,7 +33,7 @@ function register(user) {
         body: JSON.stringify({ user })
     };
 
-    return fetch("/api/user/register", requestParams)
+    return fetch("/api/users/register", requestParams)
         .then(handleResponse);
 }
 
