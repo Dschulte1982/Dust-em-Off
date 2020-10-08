@@ -95,14 +95,14 @@ export default function NavBar(props) {
         <>
           <div id="landing-page-nav-list">
             <span id="landing-page-logo">
-              <NavLink to="/" activeclass="active" className="nav-bar-link">
+              <NavLink to="/" activeclass="active" className="modal-nav-bar-link">
                 Dust 'Em Off
               </NavLink>
             </span>
-            <button id="landing-page-login-button" className="nav-bar-link" onClick={openLoginModal}>
+            <button id="landing-page-login-button" className="modal-nav-bar-link" onClick={openLoginModal}>
               My Account
             </button>
-            <button id="landing-page-signup-button" className="nav-bar-link" onClick={openRegisterModal}>
+            <button id="landing-page-signup-button" className="modal-nav-bar-link" onClick={openRegisterModal}>
               Sign Up
             </button>
           </div>
@@ -127,23 +127,23 @@ export default function NavBar(props) {
                  value={password}
                  onChange={handleChange}
                  />
-                <span id="register-now-header">Don't have an account?</span>
-                <button id="register-now-button" onClick={openRegisterModal}>Register now</button>
                 <button
                  id="login-form-button"
                  type="submit">
                      {loggingIn && <span className="spinner" />}
                      Login
-                 </button>
+                </button>
               </form>
-              <button id="demo-user" onClick={demoUser}>Log-In as Demo</button>
+              <button id="demo-user" onClick={demoUser}>Login as Demo</button>
+              <span id="register-now-header">Don't have an account?</span>
+              <button id="register-now-button" onClick={openRegisterModal}>Register Now</button>
             </div>
           </div>
           <div id="register-modal" className="nav-bar-modal">
             <div className="nav-bar-modal-content">
               <div className="modal-close" onClick={closeRegisterModal}>&times;</div>
               <form id="nav-bar-register-form" onSubmit={handleRegister}>
-                <span id="register-form-header">Register Your Account</span>
+                <span id="register-form-header">Create an Account</span>
                 <input
                   id="register-form-username"
                   type="text"
@@ -168,14 +168,14 @@ export default function NavBar(props) {
                   value={user.password}
                   onChange={handleChange}
                 />
-                <span id="login-now-header">Already registered?</span>
-                <button id="login-now-button" onClick={openLoginModal}>Login now</button>
                 <button
                  id="register-form-button"
                  type="submit">
                      {loggingIn && <span className="spinner" />}
                      Sign Up
                  </button>
+                <span id="login-now-header">Already registered?</span>
+                <button id="login-now-button" onClick={openLoginModal}>Login Now</button>
               </form>
             </div>
           </div>

@@ -31,7 +31,7 @@ function App() {
                 component={HomePage}
             ></ConnectedProtectedRoute>
             <Route
-                exact path="/login"
+                exact path="/"
                 render={(props) => <LandingPage {...props}></LandingPage>}>
             </Route>
             <Route path="/text" component={UsersList} />

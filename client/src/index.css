@@ -5,12 +5,24 @@ a:link, a:visited {
     color: white;
 }
 
+.images {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+h1 {
+    margin: 0;
+}
+
+h2 {
+    margin: 0;
+}
+
 /* Nav Bar CSS */
 
 #landing-page-nav-list {
     font-family: "Montserrat", sans-serif;
     display: flex;
-    /* flex-direction: row; */
     justify-content: center;
     width: 100%;
     padding-top: 1%;
@@ -18,9 +30,16 @@ a:link, a:visited {
 
 #landing-page-logo {
     margin-left: 3%;
-    color: white;
     font-family: "Monarcha", sans-serif;
-    font-size: 24px;
+    font-size: 40px;
+}
+
+.modal-nav-bar-link:link, .modal-nav-bar-link:visited  {
+    color: #205A94;
+}
+
+.modal-nav-bar-link:hover {
+    color: white;
 }
 
 #landing-page-login-button {
@@ -42,7 +61,28 @@ a:link, a:visited {
     height: 50px;
     min-height: 50px;
     max-width: 150px;
+    border: none;
 }
+
+#landing-page-login-button:hover {
+    outline: none;
+    text-decoration: underline;
+}
+
+#landing-page-login-button:focus {
+    outline: none;
+    text-decoration: underline #205A94;
+}
+
+#landing-page-signup-button:hover {
+    outline: none;
+    background-color: #4c78a3;
+}
+
+#landing-page-signup-button:focus {
+    outline: none;
+}
+
 
 /* The Modal (background) */
 
@@ -129,14 +169,20 @@ a:link, a:visited {
     font-family: inherit;
 }
 
+#register-now-button:hover {
+    color: #041b33;
+    outline: none;
+}
+
 #login-form-button {
     width: 100%;
+    height: 40px;
     max-width: 150px;
     align-self: center;
-    margin-top: 20px;
-    background: none;
-    color: #205A94;
-    border-color: #205A94;
+    margin-top: 30px;
+    background-color: #205A94;
+    color: white;
+    border: none;
     border-radius: 4px;
     outline-color: #205A94;
     font-size: 16px;
@@ -145,12 +191,15 @@ a:link, a:visited {
 }
 
 #login-form-button:hover {
-    background-color: #205A94;
+    background-color: #4c78a3;
+    outline: none;
+    border: none;
     color: white;
 }
 
 #demo-user {
     width: 100%;
+    height: 40px;
     max-width: 150px;
     align-self: center;
     margin-top: 20px;
@@ -174,13 +223,13 @@ a:link, a:visited {
     color: #aaaaaa;
     padding-right: 2%;
     font-size: 40px;
-    font-weight: bold;
+    font-weight: normal;
     align-self: flex-end;
 }
 
 .modal-close:hover,
 .modal-close:focus {
-    color: #000;
+    color: #205A94;
     text-decoration: none;
     cursor: pointer;
 }
@@ -267,18 +316,19 @@ a:link, a:visited {
 }
 
 #login-now-button:hover {
-
+    color: #041b33;
+    outline: none;
 }
 
 #register-form-button {
     width: 100%;
-    height: 30px;
+    height: 40px;
     max-width: 150px;
     align-self: center;
-    margin-top: 20px;
-    background: none;
-    color: #205A94;
-    border-color: #205A94;
+    margin-top: 30px;
+    background: #205A94;
+    color: white;
+    border: none;
     border-radius: 4px;
     outline-color: #205A94;
     font-size: 16px;
@@ -287,14 +337,20 @@ a:link, a:visited {
 }
 
 #register-form-button:hover {
-    background-color: #205A94;
+    background-color: #4c78a3;
     color: white;
+}
+
+#register-form-button:active {
+    border: none;
 }
 
 
 /* Landing Page CSS */
 
-#main-content-container {
+#main-content-body-container {
+    display: flex;
+    flex-direction: column;
     font-family: "Montserrat", sans-serif;
     background-image: url('./images/main-content-background.png');
     background-size: cover;
@@ -305,30 +361,158 @@ a:link, a:visited {
     width: 100%;
 }
 
-
-
-#main-content-body-container {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
+#main-content-desc-container {
+    width: 100%;
+    max-width: 520px;
+    margin: 0% 10%;
+    overflow-wrap: break-word;
+    margin-top: 8%;
 }
 
 #main-content-header-1 {
-
+    font-family: inherit;
+    font-size: 16px;
+    color: #205A94;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2%;
 }
 
 #main-content-header-2 {
-    color: white;
     font-family: "Monarcha", sans-serif;
+    font-size: 32px;
+    color: white;
     font-weight: 700;
 }
 
+#main-content-body {
+    font-family: inherit;
+    font-size: 1.5em;
+    color: #205A94;
+    margin-top: 5%;
+}
+
 #main-content-button {
-    max-width: 150px;
+    font-family: inherit;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #205A94;
+    max-width: 300px;
     width: 100%;
+    height: 100%;
+    min-height: 80px;
     background: transparent;
     padding: 10px;
-    border-color: blue;
+    border: 4px solid #205A94;
+    margin-top: 10%;
+}
+
+#main-content-button:hover {
+    color: white;
+    background-color: #205A94;
+}
+
+/* Landing Page Featured Section */
+
+#main-featured {
+    display: flex;
+    flex-direction: column;
+    min-height: 760px;
+    max-height: 960px;
+    height: 100%;
+    width: 100%;
+    color: #454545;
+    margin: 100px 0;
+}
+
+#main-featured-collection {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+#main-featured-image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family: "Montserrate", sans-serif;
+    margin-left: 5%;
+    width: 100%;
+}
+
+#main-featured-header {
+    font-family: "Montserrat", sans-serif;
+    font-size: 50px;
+    color:#205A94;
+    font-weight: 700;
+    margin-top: 50px;
+    margin-left: 10%;
+    border-bottom: 1px solid#454545;
+    margin-right: 10%;
+    padding-bottom: 10px;
+}
+
+#main-featured-content-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 10%;
+}
+
+#main-featured-profile-header {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+}
+
+#main-featured-image {
+    max-width: 75%;
+    height: auto;
+    margin-left: 10%;
+    box-shadow: 10px 10px 20px 5px black;
+}
+
+#main-featured-profile-image {
+    max-width: 50px;
+    height: auto;
+}
+
+#featured-profile-img {
+    border-radius: 100px;
+}
+
+#featured-profile-user {
+    font-family: inherit;
+    font-size: 25px;
+    color: inherit;
+    align-self: center;
+    margin-left: 2%;
+}
+
+#featured-item-count {
+    font-family: inherit;
+    color: inherit;
+    font-size: 20px;
+}
+
+#main-featured-item-container {
+    display: flex;
+    flex-direction: column;
+    font-family: inherit;
+    margin: 10% 10% 0 0;
+}
+
+#main-featured-item-title {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 35px;
+}
+
+#main-featured-item-description {
+    font-family: inherit;
+    color: inherit;
+    font-size: 20px;
+    margin-top: 20px;
 }
 
 /* --Home Page CSS-- */
@@ -345,7 +529,7 @@ a:link, a:visited {
 }
 
 .nav-bar-link:link, .nav-bar-link:visited {
-    color: #205A94
+    color: #205A94;
 }
 
 #homepage-nav-bar-logo {
