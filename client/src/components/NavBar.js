@@ -5,7 +5,6 @@ import { userActions } from '../actions/userActions';
 
 export default function NavBar(props) {
 
-    props = {"props": "test"}
     const [inputs, setInputs] = useState({
         username: '',
         password: ''
@@ -51,7 +50,6 @@ export default function NavBar(props) {
         const modal = document.getElementById("register-modal");
         loginModal.style.display = "none";
         modal.style.display = "block";
-        console.log(props)
     }
 
     const closeRegisterModal = (e) => {
@@ -83,6 +81,14 @@ export default function NavBar(props) {
         if (user.username && user.email && user.password) {
             dispatch(userActions.register(user));
         }
+    }
+
+    const demoUser = (e) => {
+        e.preventDefault();
+
+        setSubmitted(true);
+        const { from } = location.state || { from: { pathname: "/home" } };
+        dispatch(userActions.login("DemoUser", "password", from))
     }
 
     return (
@@ -130,6 +136,7 @@ export default function NavBar(props) {
                      Login
                  </button>
               </form>
+              <button id="demo-user" onClick={demoUser}>Log-In as Demo</button>
             </div>
           </div>
           <div id="register-modal" className="nav-bar-modal">

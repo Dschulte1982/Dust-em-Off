@@ -149,6 +149,26 @@ a:link, a:visited {
     color: white;
 }
 
+#demo-user {
+    width: 100%;
+    max-width: 150px;
+    align-self: center;
+    margin-top: 20px;
+    background: none;
+    color: #205A94;
+    border-color: #205A94;
+    border-radius: 4px;
+    outline-color: #205A94;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: inherit;
+}
+
+#demo-user:hover {
+    background-color: #205A94;
+    color: white;
+}
+
   /* The Close Button */
 .modal-close {
     color: #aaaaaa;
@@ -309,4 +329,79 @@ a:link, a:visited {
     background: transparent;
     padding: 10px;
     border-color: blue;
+}
+
+/* --Home Page CSS-- */
+
+/* Home Page Nav Bar CSS */
+
+#homepage-nav-bar {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Monarcha", "Montserrat", sans-serif;
+    border-bottom: 3px solid #00000029;
+}
+
+.nav-bar-link:link, .nav-bar-link:visited {
+    color: #205A94
+}
+
+#homepage-nav-bar-logo {
+    font-size: 30px;
+}
+
+#homepage-nav-bar-account {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+}
+
+#homepage-featured-container {
+    display: grid;
+    grid-template-columns: 0.25fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 5% 5% 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 100%;
+    min-width: 800px;
+    height: 400px;
+}
+
+#homepage-featured-header {
+    grid-column: 2 / 3;
+}
+
+#homepage-featured-image {
+    width: 100%;
+    height: 100%;
+    background: url("https://starwarsblog.starwars.com/wp-content/uploads/2015/07/S5001259.jpg");
+    background-size: 300px;
+    background-repeat: no-repeat;
+    grid-row: 3 / 7;
+    grid-column: 2 / 4;
+}
+
+#homepage-featured-user-pic {
+    grid-row: 3 / 4;
+    grid-column: 4 / 5;
+    border-radius: 200px;
+    width: 50px;
+    height: 50px;
+    justify-self: right;
+}
+
+#homepage-featured-user {
+    align-self: center;
+    justify-self: left;
+    grid-row: 3 / 4;
+    grid-column: 5 / 6;
+}
+
+#homepage-featured-item-name {
+    grid-row: 4 / 5;
+    grid-column: 5 / 6;
+}
+
+#homepage-featured-item-description {
+    grid-row: 5 / 6;
+    grid-column: 5 / 6;
 }

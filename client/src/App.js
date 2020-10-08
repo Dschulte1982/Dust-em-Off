@@ -12,11 +12,12 @@ import { history } from './helpers/history';
 // }
 
 const protectedRoute = ({ component: Component, loggedIn, ...rest }) => {
+    console.log(loggedIn)
     if (loggedIn) return <Route {...rest} component={Component} />;
     else return <Redirect to="/landing" />;
   };
   const mapStateToProps = (state) => {
-    return { loggedIn: !!state.auth.loggedIn };
+    return { loggedIn: !!state.auth.loggedIn || !!state.register.loggedIn};
   };
 
   const ConnectedProtectedRoute = connect(mapStateToProps, null)(protectedRoute);
@@ -30,7 +31,7 @@ function App() {
                 component={HomePage}
             ></ConnectedProtectedRoute>
             <Route
-                exact path="/landing"
+                exact path="/login"
                 render={(props) => <LandingPage {...props}></LandingPage>}>
             </Route>
             <Route path="/text" component={UsersList} />
