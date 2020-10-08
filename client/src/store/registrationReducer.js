@@ -5,7 +5,10 @@ export function registrationReducer(state = {}, action) {
         case userTypes.REGISTER_REQUEST:
             return { registering: true };
         case userTypes.REGISTER_SUCCESS:
-            return {};
+            return {
+                loggedIn: true,
+                user: action.user
+            };
         case userTypes.REGISTER_FAILURE:
             return {};
         default:
