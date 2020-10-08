@@ -417,7 +417,7 @@ h2 {
 #main-featured {
     display: flex;
     flex-direction: column;
-    min-height: 760px;
+    min-height: 660px;
     max-height: 960px;
     height: 100%;
     width: 100%;
@@ -469,7 +469,7 @@ h2 {
     max-width: 75%;
     height: auto;
     margin-left: 10%;
-    box-shadow: 10px 10px 20px 5px black;
+    box-shadow: 0px 5px 10px black;
 }
 
 #main-featured-profile-image {
@@ -513,6 +513,109 @@ h2 {
     color: inherit;
     font-size: 20px;
     margin-top: 20px;
+}
+
+/* Landing Page Explore Feature */
+
+#explore-collections-master {
+    min-height: 400px;
+    width: 100%;
+    background-color: #F4F4F4;
+}
+
+#search-master-container {
+    width: 100%;
+    height: 100px;
+    padding: 40px 0 0 0;
+}
+
+#search-bar {
+    width: 100%;
+    height: 100%;
+    font-size: 40px;
+    border-bottom: 1px solid #454545;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background: transparent;
+    background-image: url('./images/vector_search_icon.svg');
+    background-repeat: no-repeat;
+    background-position: 25px 33px;
+    background-size: 35px;
+    padding-left: 80px;
+    opacity: 80%;
+}
+
+#search-bar::placeholder {
+    opacity: 75%;
+}
+
+#main-search-bar-container {
+    margin: 0 10%;
+}
+
+#main-categories-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    padding: 20px 0;
+    margin: 0 10%;
+}
+
+.main-categories {
+    padding: 20px 0 0 0;
+}
+
+/* Landing Page Footer CSS */
+
+#footer-master-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 180px;
+    width: 100%;
+    background-color: #205A94;
+    font-family: "montserrat", sans-serif;
+    font-size: 18px;
+    color: white;
+}
+
+#footer-column-1 {
+    width: 100%;
+    margin: 0 17.5%;
+}
+
+#footer-column-2 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0 17.5%;
+}
+
+#my-info {
+    display: flex;
+    flex-direction: column;
+    padding: 10% 0 15% 0;
+}
+
+.personal-info {
+    padding: 10px 0 0 0;
+}
+
+#social-media-links {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10% 0 0 0;
+}
+
+#linked-in {
+    padding: 0 15px 0 0;
+}
+
+.footer-links:link, .footer-links:visited {
+    color: white;
 }
 
 /* --Home Page CSS-- */
