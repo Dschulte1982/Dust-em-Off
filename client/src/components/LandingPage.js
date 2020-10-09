@@ -7,6 +7,12 @@ import Search from './Search';
 import Footer from './Footer';
 
 function LandingPage(props) {
+  const handleClick = (e) => {
+    e.preventDefault();
+
+  }
+
+
   return (
       <div id="main-content-container">
         <div id="main-content-body-container">
@@ -30,7 +36,8 @@ function LandingPage(props) {
               <div id="main-category-2-1" className="main-categories">Coins & Currency</div>
             </div>
             <div id="main-categories-2">
-              <div id="main-category-1-2" className="main-categories">Comic Books</div>
+              <div id="main-category-1-2" className="main-categories">
+                <a href="/category/1" className="landing-page-links">Comic Books</a></div>
               <div id="main-category-2-2" className="main-categories">Dolls & Toys</div>
             </div>
             <div id="main-categories-3">
