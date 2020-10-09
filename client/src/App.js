@@ -35,7 +35,7 @@ function App() {
                 exact path="/"
                 render={(props) => <LandingPage {...props}></LandingPage>}>
             </Route>
-            <Route path="/category"
+            <Route exact path="/category/:categoryId"
             render={(props) => <CategoryPage {...props}></CategoryPage>} />
         </Switch>
     </Router>
