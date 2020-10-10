@@ -1,4 +1,5 @@
 import React from 'react';
+import {ReactComponent as heart } from '../images/heart.svg';
 
 
 export default function GalleryFrame() {
@@ -15,7 +16,11 @@ export default function GalleryFrame() {
               <div className="category-gallery-title">Action Comics #1 - Rise of Superman</div>
             </div>
             <div id="category-gallery-likes-container">
-              <div id="category-gallery-likes">Likes</div>
+              <div id="category-gallery-likes">
+                {/* <svg width="20" height="20"> */}
+                  <img href={heart} width="20" height="20" object-fit="contain"/>
+                {/* </svg> */}
+              </div>
               <div id="category-gallery-likes-count">115</div>
             </div>
           </div>
