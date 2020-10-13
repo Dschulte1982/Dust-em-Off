@@ -18,7 +18,7 @@ export default function FeatureSection(props) {
           <div id="main-featured-content-container">
             <div id="main-featured-profile-header">
               <div id="main-featured-profile-image">
-                <img id="featured-profile-img" className="images" src={require("../images/dustin_portrait.jpg")} alt="" object-fit="contain"></img>
+                <img id="featured-profile-img" className="images" src={require("../images/profile_photo_luke_skywalker.png")} alt="" object-fit="contain"></img>
               </div>
               <div id="featured-profile-user">lukeskywalker82 <br/><span id="featured-item-count">653 Items</span></div>
             </div>
