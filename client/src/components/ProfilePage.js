@@ -1,0 +1,49 @@
+import React from 'react';
+import NavBar from './NavBar';
+import star_wars_banner from '../images/star_wars_banner.jpg';
+import profile_photo_luke_skywalker from '../images/profile_photo_luke_skywalker.png';
+import GalleryFrame from './GalleryFrame';
+import Footer from './Footer';
+
+export default function ProfilePage() {
+    return (
+        <>
+          <div id="profile-page-master">
+            <div id="profile-page-nav">{NavBar()}</div>
+            <div id="profile-page-banner-container">
+                <div id="profile-banner-img-container">
+                  <img id="profile-banner-img" className="images" src={star_wars_banner} alt="" />
+                </div>
+                <div id="profile-img-container">
+                  <img id="profile-page-img" className="images" src={profile_photo_luke_skywalker} alt="Profile Pic"/>
+                </div>
+            </div>
+            <div id="profile-user-details-container">
+              <div id="profile-user-details">
+                <div id="profile-username">lukeskywalker82</div>
+                <div id="profile-user-item-total">653 Items</div>
+                <button id="profile-user-follow">Follow +</button>
+              </div>
+              <div id="profile-user-gallery-container">
+                  <div id="profile-user-gallery-1">{GalleryFrame()}</div>
+                  <div id="profile-user-gallery-2">{GalleryFrame()}</div>
+                  <div id="profile-user-gallery-3">{GalleryFrame()}</div>
+              </div>
+            </div>
+            <div id="profile-categories-container">
+              <div id="profile-category-1-container">
+                <div id="profile-category-1-header-container" className="profile-header-container">
+                  <div id="profile-category-1-header" className="profile-category-header">Star Wars</div>
+                  <button id="profile-category-1-show" className="profile-category-show">Show More</button>
+                </div>
+              </div>
+              <div id="profile-category-2-header-container" className="profile-header-container">
+                <div id="profile-category-2-header" className="profile-category-header">Comic Books</div>
+                <button id="profile-category-2-show" className="profile-category-show">Show More</button>
+              </div>
+            </div>
+            <div id="profile-page-footer-container">{Footer()}</div>
+          </div>
+        </>
+    )
+}

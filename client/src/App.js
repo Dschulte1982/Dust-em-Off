@@ -6,6 +6,7 @@ import HomePage from './components/HomePage';
 import UsersList from './components/UsersList';
 import { history } from './helpers/history';
 import CategoryPage from './components/CategoryPage';
+import ProfilePage from './components/ProfilePage';
 
 
 // const isLoggedIn = () => {
@@ -35,6 +36,8 @@ function App() {
                 exact path="/"
                 render={(props) => <LandingPage {...props}></LandingPage>}>
             </Route>
+            <Route exact path="/users/:userId"
+            render={(props) => <ProfilePage {...props}></ProfilePage>} />
             <Route exact path="/category/:categoryId"
             render={(props) => <CategoryPage {...props}></CategoryPage>} />
         </Switch>
