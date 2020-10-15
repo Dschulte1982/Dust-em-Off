@@ -26,7 +26,7 @@ const protectedRoute = ({ component: Component, loggedIn, ...rest }) => {
 
 function App() {
   return (
-    <Router history={history}>
+      <Router history={history}>
         <Switch>
             <ConnectedProtectedRoute
                 exact path="/home"
@@ -41,7 +41,7 @@ function App() {
             <Route exact path="/category/:categoryId"
             render={(props) => <CategoryPage {...props}></CategoryPage>} />
         </Switch>
-    </Router>
+      </Router>
   );
 }
 
