@@ -1,11 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import NavBar from './NavBar';
 import star_wars_banner from '../images/star_wars_banner.jpg';
 import profile_photo_luke_skywalker from '../images/profile_photo_luke_skywalker.png';
 import GalleryFrame from './GalleryFrame';
 import Footer from './Footer';
 
-export default function ProfilePage() {
+export default function ProfilePage(props) {
     return (
         <>
           <div id="profile-page-master">
@@ -36,10 +37,24 @@ export default function ProfilePage() {
                   <div id="profile-category-1-header" className="profile-category-header">Star Wars</div>
                   <button id="profile-category-1-show" className="profile-category-show">Show More</button>
                 </div>
+                <div id="profile-category-1-content" className="profile-category-content-container">
+                  <div id="profile-user-content-1-1" className="profile-content-gallery">{GalleryFrame()}</div>
+                  <div id="profile-user-content-2-1" className="profile-content-gallery">{GalleryFrame()}</div>
+                  <div id="profile-user-content-3-1" className="profile-content-gallery">{GalleryFrame()}</div>
+                  <div id="profile-user-content-4-1" className="profile-content-gallery">{GalleryFrame()}</div>
+                </div>
               </div>
-              <div id="profile-category-2-header-container" className="profile-header-container">
-                <div id="profile-category-2-header" className="profile-category-header">Comic Books</div>
-                <button id="profile-category-2-show" className="profile-category-show">Show More</button>
+              <div id="profile-category-2-container">
+                <div id="profile-category-2-header-container" className="profile-header-container">
+                  <div id="profile-category-2-header" className="profile-category-header">Comic Books</div>
+                  <button id="profile-category-2-show" className="profile-category-show">Show More</button>
+                </div>
+                <div id="profile-category-2-content">
+                  <div id="profile-user-content-1-2" className="profile-content-gallery">{GalleryFrame()}</div>
+                  <div id="profile-user-content-2-2" className="profile-content-gallery">{GalleryFrame()}</div>
+                  <div id="profile-user-content-3-2" className="profile-content-gallery">{GalleryFrame()}</div>
+                  <div id="profile-user-content-3-2" className="profile-content-gallery">{GalleryFrame()}</div>
+                </div>
               </div>
             </div>
             <div id="profile-page-footer-container">{Footer()}</div>
