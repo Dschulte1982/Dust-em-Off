@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, Redirect, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../actions/userActions';
-import Example from './Example';
+import { itemActions } from '../actions/itemActions';
+import OtherApp from './DragAndDrop';
 
-export default function NavBar(props) {
+export default function NavBar() {
 
     const [inputs, setInputs] = useState({
         username: '',
@@ -23,14 +24,13 @@ export default function NavBar(props) {
     const loggedIn = useSelector(state => state.auth.loggedIn)
     // const registering = useSelector(state => state.registration.registering)
     const location = useLocation();
-    console.log(location)
 
     const dispatch = useDispatch();
 
     // Sets the login status to default
-    useEffect(() => {
-        dispatch(userActions.logout());
-    }, []);
+    // useEffect(() => {
+    //     dispatch(userActions.logout());
+    // }, []);
 
 
     const openLoginModal = (e) => {
@@ -90,8 +90,8 @@ export default function NavBar(props) {
         e.preventDefault();
 
         setSubmitted(true);
-        const { from } = location.pathname || { from: { pathname: "/" } };
-        console.log(location.state);
+        const from  = location.pathname || { from: { pathname: "/" } };
+        console.log(from);
         dispatch(userActions.login("DemoUser", "password", from))
     }
 
@@ -114,6 +114,7 @@ export default function NavBar(props) {
 
     const openCreateModal = (e) => {
       e.preventDefault();
+
       const modal = document.getElementById("create-modal")
       modal.style.display = "block";
     }
@@ -131,6 +132,16 @@ export default function NavBar(props) {
       modal.style.display = "block"
     }
 
+    const closeItemModal = (e) => {
+      e.preventDefault();
+      const modal = document.getElementById("create-item-modal");
+      modal.style.display = "none";
+    }
+
+    const style = {
+      display: "none"
+    }
+
     if (loggedIn) {
       return (
         <>
@@ -140,9 +151,12 @@ export default function NavBar(props) {
                 Dust 'Em Off
               </NavLink>
             </span>
-            <button className="modal-nav-bar-link" onClick={openCreateModal}>
-                Add to Collection
-              </button>
+            <button id="add-collection-button" className="modal-nav-bar-link" onClick={openCreateModal}>
+              Add to Collection
+            </button>
+            <button id="add-item-button" className="modal-nav-bar-link" onClick={openItemModal}>
+              Add Item
+            </button>
             <div id="my-account-container-logged">
               <button id="my-account-button" className="modal-nav-bar-link" onClick={openDropDown}>
                 My Account
@@ -154,7 +168,7 @@ export default function NavBar(props) {
               </div>
             </div>
           </div>
-          <div id="create-modal" className="nav-bar-modal">
+          <div id="create-modal" className="nav-bar-modal" style={style}>
             <div className="create-modal-content">
               <div className="modal-close" onClick={closeCreateModal}>&times;</div>
               <form id="nav-bar-create-form" onSubmit={handleSubmit}>
@@ -196,7 +210,7 @@ export default function NavBar(props) {
           </div>
           <div id="create-item-modal" className="nav-bar-modal">
             <div className="create-item-modal-content">
-              <div className="modal-close" onClick={closeCreateModal}>&times;</div>
+              <div className="modal-close" onClick={closeItemModal}>&times;</div>
               <form id="nav-bar-item-form" onSubmit={handleSubmit}>
                 <span id="create-item-form-header">Put Your Item on Display</span>
                 <div id="create-item-form-content">
@@ -244,7 +258,7 @@ export default function NavBar(props) {
                    <option value="Star Wars">Poor</option>
                    <option value="Trading Cards">Damaged</option>
                  </select>
-                 <div id="drag-and-drop-container">{<Example />}</div>
+                 <div id="drag-and-drop-container">{<OtherApp />}</div>
                  </div>
                  </div>
                 <button

@@ -5,6 +5,10 @@ a:link, a:visited {
     color: white;
 }
 
+body {
+    margin: 0 0 0 0;
+}
+
 .images {
     max-width: 100%;
     max-height: 100%;
@@ -24,6 +28,14 @@ h2 {
 }
 
 /* Nav Bar CSS */
+#header-nav-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    box-shadow: 5px 1px 5px 0;
+}
 
 #landing-page-nav-list {
     font-family: "Montserrat", sans-serif;
@@ -48,7 +60,7 @@ h2 {
 }
 
 #landing-page-login-button {
-    color: white;
+    color: #205A94;
     background: none;
     border: none;
     font-size: 22px;
@@ -101,15 +113,20 @@ h2 {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding-top: 1%;
+    position: fixed;
+    top: 0;
+    height: 100px;
+    background-color: white;
+    box-shadow: 5px 1px 5px 0;
 }
 
 #my-account-container-logged {
     margin: 0 5% 0 0;
+    align-self: center;
 }
 
 #my-account-button {
-    color: white;
+    color: #205A94;
     background: none;
     border: none;
     font-size: 22px;
@@ -126,13 +143,12 @@ h2 {
     /* display: none; */
     position: absolute;
     background: white;
-    border: 1px solid black;
+    border: 1px solid #205A94;
     border-top: none;
-    border-bottom: none;
-    min-width: 100px;
+    min-width: 102px;
     height: 100px;
     padding: 5px 5px;
-    margin-left: 0px;
+    margin: 0 0 0 18px;
     z-index: 1;
     transition: 0.5s ease-out;
 }
@@ -153,6 +169,30 @@ h2 {
     outline: none;
 }
 
+#add-collection-button {
+    background: none;
+    color: #205A94;
+    border: none;
+    font-family: "Montserrat", sans-serif;
+    font-size: 22px;
+}
+
+#add-item-button {
+    background: none;
+    color: #205A94;
+    border: none;
+    font-family: "Montserrat", sans-serif;
+    font-size: 22px;
+}
+
+#add-collection-button:hover, #add-item-button:hover {
+    text-decoration: underline;
+}
+
+#add-collection-button:focus, #add-item-button:focus {
+    outline: none;
+    text-decoration: underline #205A94;
+}
 
 /* The Modal (background) */
 
@@ -417,6 +457,20 @@ h2 {
 
 /* Create Modal Content */
 
+#create-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
 .create-modal-content {
     display: flex;
     flex-direction: column;
@@ -510,6 +564,7 @@ option:first-of-type {
 }
 
 /* Create Item Modal */
+
 .create-item-modal-content {
     display: flex;
     flex-direction: column;
@@ -582,12 +637,14 @@ option:first-of-type {
 #create-item-form-year {
     padding: 0 0 5px 5px;
     border-bottom: 2px solid #454545;
+    width: 200px;
 }
 
 #create-item-form-condition {
     padding: 0 0 5px 5px;
     margin: 2em 0 0 0;
     border-bottom: 2px solid #454545;
+    width: 200px;
 }
 
 #create-item-form-upload {
@@ -984,6 +1041,7 @@ option:first-of-type {
     height: 100%;
     font-family: "Montserrate", sans-serif;
     font-size: 16px;
+    margin: 100px 0 0 0;
 }
 
 #category-img {

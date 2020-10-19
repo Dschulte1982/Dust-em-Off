@@ -6,7 +6,9 @@ import profile_photo_luke_skywalker from '../images/profile_photo_luke_skywalker
 import GalleryFrame from './GalleryFrame';
 import Footer from './Footer';
 
-export default function ProfilePage(props) {
+export default function ProfilePage() {
+    const user = useSelector(state => state.auth.user)
+    console.log(user)
     return (
         <>
           <div id="profile-page-master">
@@ -21,7 +23,7 @@ export default function ProfilePage(props) {
             </div>
             <div id="profile-user-details-container">
               <div id="profile-user-details">
-                <div id="profile-username">lukeskywalker82</div>
+                <div id="profile-username">{user.username}</div>
                 <div id="profile-user-item-total">653 Items</div>
                 <button id="profile-user-follow">Follow +</button>
               </div>

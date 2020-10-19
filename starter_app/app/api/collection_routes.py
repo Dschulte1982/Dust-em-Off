@@ -9,3 +9,25 @@ collection_routes = Blueprint('collection', __name__)
 def index():
     response = Collection.query.all()
     return {"collections": [collection.to_dict() for collection in response]}
+
+
+@collection_routes.route("item/<itemId>", methods=["GET"])
+def getItem(itemId):
+    print("hit here")
+    item = Item.query.filter(Item.id == itemId).first()
+    return {"item": str(item.item_name)}
+
+
+@collection_routes.route('/new-item', methods=['POST'])
+def postItem():
+    data = request.json
+    if data:
+        postItem = Item(item_name=data["item_name"],
+                        likes=0,
+                        description=data["description"],
+                        year=data["year"],
+                        image=data["image"])
+        db.session.add(postItem)
+        db.session.commit()
+        createdItem = Item.query.filter(Item.item_name == data["item_name"]).first()
+    return {"id": createdItem.id, "item_name": createdItem.item_name}

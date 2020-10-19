@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route, Router, Redirect, NavLink } from 'react-router-dom';
 import { connect, useDispatch } from 'react-redux';
 import LandingPage from './components/LandingPage';
 import HomePage from './components/HomePage';
-import UsersList from './components/UsersList';
 import { history } from './helpers/history';
 import CategoryPage from './components/CategoryPage';
 import ProfilePage from './components/ProfilePage';
+import { userActions } from './actions/userActions';
 
 
 // const isLoggedIn = () => {
@@ -14,9 +14,8 @@ import ProfilePage from './components/ProfilePage';
 // }
 
 const protectedRoute = ({ component: Component, loggedIn, ...rest }) => {
-    console.log(loggedIn)
     if (loggedIn) return <Route {...rest} component={Component} />;
-    else return <Redirect to="/landing" />;
+    else return <Redirect to="/" />;
   };
   const mapStateToProps = (state) => {
     return { loggedIn: !!state.auth.loggedIn || !!state.register.loggedIn};
@@ -25,6 +24,22 @@ const protectedRoute = ({ component: Component, loggedIn, ...rest }) => {
   const ConnectedProtectedRoute = connect(mapStateToProps, null)(protectedRoute);
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const loadUser = async () => {
+      // enter your back end route to get the current user
+      const res = await fetch("/api/users/current");
+      if (res.ok) {
+        res.data = await res.json(); // current user info - obj with key of user
+        console.log(res)
+        dispatch(userActions.setUser(res.data.userId, res.data.username, res.data.email ));
+      }
+      setLoading(false);
+    }
+    loadUser();
+  }, [dispatch]);
+  if(loading) return null;
   return (
       <Router history={history}>
         <Switch>
@@ -32,12 +47,15 @@ function App() {
                 exact path="/home"
                 component={HomePage}
             ></ConnectedProtectedRoute>
+            <ConnectedProtectedRoute
+                exact path="/users/:userId"
+                component={ProfilePage} />
             <Route
                 exact path="/"
                 render={(props) => <LandingPage {...props}></LandingPage>}>
             </Route>
-            <Route exact path="/users/:userId"
-            render={(props) => <ProfilePage {...props}></ProfilePage>} />
+            {/* <Route exact path="/users/:userId"
+            render={(props) => <ProfilePage {...props}></ProfilePage>} /> */}
             <Route exact path="/category/:categoryId"
             render={(props) => <CategoryPage {...props}></CategoryPage>} />
         </Switch>
