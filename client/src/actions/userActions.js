@@ -5,17 +5,17 @@ import { history } from '../helpers/history';
 export const userActions = {
     login,
     logout,
-    register
+    register,
+    setUser
 };
 
 function login(username, password, from) {
     return dispatch => {
         dispatch(request({ username }));
-
         userService.login(username, password)
             .then(user => {
                 dispatch(success(user));
-                history.push(from);
+                history.replace(`/users/${user.id}`);
             },
             error => {
                 dispatch(failure(error.toString()));
@@ -50,4 +50,13 @@ function register(user) {
     function request(user) { return { type: userTypes.REGISTER_REQUEST, user } }
     function success(user) { return { type: userTypes.REGISTER_SUCCESS, user} }
     function failure(error) { return { type: userTypes.REGISTER_FAILURE, error } }
+}
+
+function setUser(id, username, email) {
+    return {
+        type: userTypes.LOGIN_SUCCESS,
+        id,
+        username,
+        email
+    }
 }

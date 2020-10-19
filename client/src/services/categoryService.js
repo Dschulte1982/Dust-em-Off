@@ -7,7 +7,6 @@ export const categoryService = {
 };
 
 function getCategory(categoryId) {
-    console.log(categoryId)
     return fetch(`${categoryId}`)
         .then(handleResponse)
         // .then(category => { return category });
