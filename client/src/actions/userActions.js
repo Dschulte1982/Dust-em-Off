@@ -38,8 +38,8 @@ function register(user) {
 
         userService.register(user)
             .then(user => {
-                dispatch(success());
-                history.push('/');
+                dispatch(success(user));
+                history.replace(`/users/${user.id}`);
                 // dispatch(alertActions.success('Registration successful'));
             },
             error => {
@@ -48,7 +48,7 @@ function register(user) {
             });
     }
     function request(user) { return { type: userTypes.REGISTER_REQUEST, user } }
-    function success(user) { return { type: userTypes.REGISTER_SUCCESS, user} }
+    function success(user) { return { type: userTypes.LOGIN_SUCCESS, user} }
     function failure(error) { return { type: userTypes.REGISTER_FAILURE, error } }
 }
 

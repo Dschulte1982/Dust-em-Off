@@ -8,7 +8,6 @@ import Footer from './Footer';
 
 export default function ProfilePage() {
     const user = useSelector(state => state.auth.user)
-    console.log(user)
     return (
         <>
           <div id="profile-page-master">

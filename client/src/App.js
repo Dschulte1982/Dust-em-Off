@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Switch, Route, Router, Redirect, NavLink } from 'react-router-dom';
-import { connect, useDispatch } from 'react-redux';
+import React from 'react';
+import { Switch, Route, Router, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import LandingPage from './components/LandingPage';
-import HomePage from './components/HomePage';
 import { history } from './helpers/history';
 import CategoryPage from './components/CategoryPage';
 import ProfilePage from './components/ProfilePage';
-import { userActions } from './actions/userActions';
+// import { userActions } from './actions/userActions';
 
 
 // const isLoggedIn = () => {
@@ -24,29 +23,25 @@ const protectedRoute = ({ component: Component, loggedIn, ...rest }) => {
   const ConnectedProtectedRoute = connect(mapStateToProps, null)(protectedRoute);
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    const loadUser = async () => {
-      // enter your back end route to get the current user
-      const res = await fetch("/api/users/current");
-      if (res.ok) {
-        res.data = await res.json(); // current user info - obj with key of user
-        console.log(res)
-        dispatch(userActions.setUser(res.data.userId, res.data.username, res.data.email ));
-      }
-      setLoading(false);
-    }
-    loadUser();
-  }, [dispatch]);
-  if(loading) return null;
+  // const [loading, setLoading] = useState(true);
+  // // const dispatch = useDispatch();
+  // // useEffect(() => {
+  // //   const loadUser = async () => {
+  // //     // enter your back end route to get the current user
+  // //     const res = await fetch("/api/users/current");
+  // //     if (res.ok) {
+  // //       res.data = await res.json(); // current user info - obj with key of user
+  // //       dispatch(userActions.setUser(res.data.userId, res.data.username, res.data.email ));
+  // //     }
+  // //     setLoading(false);
+  // //   }
+  // //   loadUser();
+  // // }, [dispatch]);
+
+  // if(loading) return null;
   return (
       <Router history={history}>
         <Switch>
-            <ConnectedProtectedRoute
-                exact path="/home"
-                component={HomePage}
-            ></ConnectedProtectedRoute>
             <ConnectedProtectedRoute
                 exact path="/users/:userId"
                 component={ProfilePage} />

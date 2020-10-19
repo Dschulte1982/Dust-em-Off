@@ -22,7 +22,7 @@ const DragAndDrop = (props) => {
     files.map((file) => {
       file["preview"] = URL.createObjectURL(file);
       files_with_preview.push(file);
-      console.log(file)
+      return files_with_preview;
     });
 
     if (files) {
@@ -34,33 +34,33 @@ const DragAndDrop = (props) => {
   return (
     <>
       <div
-        id="container"
+        id="drag-drop-container"
         className={"drag-drop-zone"}
         onDrop={(event) => handleDrop(event)}
         onDragOver={(event) => handleDragOver(event)}
         onDragEnter={(event) => handleDragEnter(event)}
       >
-        <p>Drag your files here</p>
-        <ol>
+        <div id="drag-drop-zone">Upload Image</div>
+        <div id="image-preview">
           {data.fileList.map((file) => {
             return (
-              <li key={file.name}>
-                <p>{file.name}</p>
+              <div key={file.name}>
+                {/* <p>{file.name}</p> */}
                 <img
                   src={file.preview}
                   alt=""
-                  style={{ width: 100, height: 100 }}
+                  style={{ width: 150, height: 150 }}
                 />
-              </li>
+              </div>
             );
           })}
-        </ol>
+        </div>
       </div>
     </>
   );
 };
 
-export default function OtherApp() {
+export default function DragDropBox() {
   const state = {
     inDropZone: false,
     fileList: [],
@@ -84,7 +84,6 @@ export default function OtherApp() {
 
   return (
     <div className="App">
-      <h1>Upload Image</h1>
       <DragAndDrop data={data} dispatch={dispatch} />
     </div>
   );

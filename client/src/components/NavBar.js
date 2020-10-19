@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, Redirect, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../actions/userActions';
-import { itemActions } from '../actions/itemActions';
-import OtherApp from './DragAndDrop';
+// import { itemActions } from '../actions/itemActions';
+import DragDropBox from './DragAndDrop';
 
 export default function NavBar() {
 
@@ -13,12 +13,15 @@ export default function NavBar() {
     });
 
     const [user, setUser] = useState({
+        userId: '',
         username: '',
         email: '',
         password: ''
     });
 
-    const [submitted, setSubmitted] = useState(false);
+    // const activeUser = useSelector(state => state.auth.user)
+
+    // const [submitted, setSubmitted] = useState(false);
     const {username, password, collection, category} = inputs;
     const loggingIn = useSelector(state => state.auth.loggingIn)
     const loggedIn = useSelector(state => state.auth.loggedIn)
@@ -26,11 +29,6 @@ export default function NavBar() {
     const location = useLocation();
 
     const dispatch = useDispatch();
-
-    // Sets the login status to default
-    // useEffect(() => {
-    //     dispatch(userActions.logout());
-    // }, []);
 
 
     const openLoginModal = (e) => {
@@ -70,7 +68,7 @@ export default function NavBar() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        setSubmitted(true);
+        // setSubmitted(true);
         if (username && password) {
             const { from } = location.pathname || { from: { pathname: "/" } };
             dispatch(userActions.login(username, password, from))
@@ -80,7 +78,7 @@ export default function NavBar() {
     const handleRegister = (e) => {
         e.preventDefault();
 
-        setSubmitted(true);
+        // setSubmitted(true);
         if (user.username && user.email && user.password) {
             dispatch(userActions.register(user));
         }
@@ -89,9 +87,8 @@ export default function NavBar() {
     const demoUser = (e) => {
         e.preventDefault();
 
-        setSubmitted(true);
+        // setSubmitted(true);
         const from  = location.pathname || { from: { pathname: "/" } };
-        console.log(from);
         dispatch(userActions.login("DemoUser", "password", from))
     }
 
@@ -101,16 +98,16 @@ export default function NavBar() {
       dispatch(userActions.logout());
     }
 
-    const openDropDown = (e) => {
-      e.preventDefault();
+    // const openDropDown = (e) => {
+    //   e.preventDefault();
 
-      const dropdown = document.getElementById("my-account-drop-down");
-      if (dropdown.className === "hide") {
-      dropdown.className = "";
-      } else {
-        dropdown.className = "hide"
-      }
-    }
+    //   const dropdown = document.getElementById("my-account-drop-down");
+    //   if (dropdown.className === "hide") {
+    //   dropdown.className = "";
+    //   } else {
+    //     dropdown.className = "hide"
+    //   }
+    // }
 
     const openCreateModal = (e) => {
       e.preventDefault();
@@ -142,12 +139,29 @@ export default function NavBar() {
       display: "none"
     }
 
+    const years = () => {
+        const num_years = [];
+        for (let i = 1900; i < 2021; i++) {
+          num_years.unshift(<option key={Math.random() * (1000 - 1) + 1} value="">{i.toString()}</option>);
+        }
+        return num_years;
+      }
+
+    const collectionList = (e) => {
+      let collection_list = []
+      // for (collection in activeCollection.collections) {
+      //   collection_list.push(collection)
+      // }
+      return collection_list;
+    }
+
+
     if (loggedIn) {
       return (
         <>
           <div id="landing-page-nav-list-logged">
             <span id="landing-page-logo-logged">
-              <NavLink to="/" activeclass="active" className="modal-nav-bar-link">
+              <NavLink to="/" id="main-logo-logged" activeclass="active" className="modal-nav-bar-link">
                 Dust 'Em Off
               </NavLink>
             </span>
@@ -158,14 +172,14 @@ export default function NavBar() {
               Add Item
             </button>
             <div id="my-account-container-logged">
-              <button id="my-account-button" className="modal-nav-bar-link" onClick={openDropDown}>
+              {/* <button id="my-account-button" className="modal-nav-bar-link" onClick={openDropDown}>
                 My Account
-              </button>
-              <div id="my-account-drop-down" className="hide">
-                <div className="drop-down-links">
-                  <button className="drop-down-links-buttons" onClick={logOut}>Logout</button>
-              </div>
-              </div>
+              </button> */}
+              {/* <div id="my-account-drop-down" className="hide">
+                <div className="drop-down-links"> */}
+                  <button id="logout-button" className="drop-down-links-buttons" onClick={logOut}>Logout</button>
+              {/* </div>
+              </div> */}
             </div>
           </div>
           <div id="create-modal" className="nav-bar-modal" style={style}>
@@ -215,6 +229,17 @@ export default function NavBar() {
                 <span id="create-item-form-header">Put Your Item on Display</span>
                 <div id="create-item-form-content">
                 <div id="create-item-form-elements-left">
+                <select
+                 id="create-item-form-collection"
+                 type="text"
+                 name="collection"
+                 placeholder="Collection"
+                //  value={itemName}
+                 onChange={handleChange}
+                 >
+                <option value="">Choose Collection</option>
+                {collectionList()}
+                </select>
                 <input
                  id="create-item-form-name"
                  type="text"
@@ -240,7 +265,8 @@ export default function NavBar() {
                 //  value={year}
                  onChange={handleChange}
                  >
-                   <option value="">Release Year</option>
+                   <option value="">Year</option>
+                   {years()}
                  </select>
                  <select
                  id="create-item-form-condition"
@@ -258,7 +284,7 @@ export default function NavBar() {
                    <option value="Star Wars">Poor</option>
                    <option value="Trading Cards">Damaged</option>
                  </select>
-                 <div id="drag-and-drop-container">{<OtherApp />}</div>
+                 <div id="drag-and-drop-container">{<DragDropBox />}</div>
                  </div>
                  </div>
                 <button
@@ -276,7 +302,7 @@ export default function NavBar() {
         <>
           <div id="landing-page-nav-list">
             <span id="landing-page-logo">
-              <NavLink to="/" activeclass="active" className="modal-nav-bar-link">
+              <NavLink to="/" activeclass="active" id="logo-not-logged" className="modal-nav-bar-link">
                 Dust 'Em Off
               </NavLink>
             </span>

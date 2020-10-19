@@ -51,13 +51,13 @@ def register():
         db.session.add(registerUser)
         db.session.commit()
         createdUser = User.query.filter(User.username == data["user"]["username"]).first()
-        return {"id": createdUser.id, "username": createdUser.username}
+        return {"id": createdUser.id, "username": createdUser.username, "email": createdUser.email}
 
 
 @user_routes.route('/current', methods=['GET'])
 def load_user():
     print(session["userId"])
     if 'userId' in session:
-        return {"userId": session['userId'], 'username': session['username'], 'email': session['email']}
+        return {"userId": session['userId'], 'username': session['username']}
     else:
         return {"msg": "user not loaded"}

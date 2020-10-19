@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, Redirect, useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { userActions } from '../actions/userActions';
+import React from 'react';
 
 export default function FeatureSection(props) {
 
