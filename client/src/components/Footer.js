@@ -13,8 +13,8 @@ export default function Footer() {
           </div>
           <div id="footer-column-2">
               <div id="social-media-links">
-                  <div id="linked-in"><a className="footer-links" href="https://linkedin.com/in/dustin-schulte07/" target="_blank">LinkedIn</a></div>
-                  <div id="github"><a className="footer-links" href="https://github.com/Dschulte1982" target="_blank">GitHub</a></div>
+                  <div id="linked-in"><a className="footer-links" href="https://linkedin.com/in/dustin-schulte07/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+                  <div id="github"><a className="footer-links" href="https://github.com/Dschulte1982" target="_blank" rel="noopener noreferrer">GitHub</a></div>
               </div>
           </div>
         </div>

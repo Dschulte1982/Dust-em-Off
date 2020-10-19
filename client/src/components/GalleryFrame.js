@@ -18,7 +18,7 @@ export default function GalleryFrame() {
             <div id="category-gallery-likes-container">
               <div id="category-gallery-likes">
                 {/* <svg width="20" height="20"> */}
-                  <img href={heart} width="20" height="20" object-fit="contain"/>
+                  <img href={heart} alt="" width="20" height="20" object-fit="contain"/>
                 {/* </svg> */}
               </div>
               <div id="category-gallery-likes-count">115</div>

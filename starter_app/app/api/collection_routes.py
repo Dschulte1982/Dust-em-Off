@@ -11,9 +11,18 @@ def index():
     return {"collections": [collection.to_dict() for collection in response]}
 
 
+@collection_routes.route('<userId>/all')
+def getCollections(userId):
+    collectionList = []
+    collections = Collection.query.filter(Collection.userId == userId).all()
+    if collections:
+        for collection in collections:
+            collectionList.append(collection.collection_name)
+    return {"collections": collectionList}
+
+
 @collection_routes.route("item/<itemId>", methods=["GET"])
 def getItem(itemId):
-    print("hit here")
     item = Item.query.filter(Item.id == itemId).first()
     return {"item": str(item.item_name)}
 

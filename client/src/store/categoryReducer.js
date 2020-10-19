@@ -4,16 +4,13 @@ let user = JSON.parse(localStorage.getItem('user'));
 const initialState = user ? { loggedIn: true, user } : {};
 
 export function categoryReducer(state = initialState, action) {
-    let newState = Object.assign({}, state);
     switch(action.type) {
         case categoryTypes.GETONE_REQUEST:
-            // newState["category"] = action.category;
             return {
                 searching: true,
                 category: action.category
             };
         case categoryTypes.GETONE_SUCCESS:
-            // newState["category"] = action.category
             return {
                 found: true,
                 category: action.category

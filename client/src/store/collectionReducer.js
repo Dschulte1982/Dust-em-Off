@@ -20,7 +20,9 @@ export function collectionReducer(state = initialState, action) {
         case collectionTypes.GETALL_REQUEST:
             return {};
         case collectionTypes.GETALL_SUCCESS:
-            return {};
+            return {
+                collection: action.collections
+            };
         case collectionTypes.GETALL_FAILURE:
             return {};
         case collectionTypes.DELETE_REQUEST:

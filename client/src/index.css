@@ -35,6 +35,7 @@ h2 {
     height: 100px;
     background-color: white;
     box-shadow: 5px 1px 5px 0;
+    z-index: 1;
 }
 
 #landing-page-nav-list {
@@ -46,6 +47,8 @@ h2 {
 }
 
 #landing-page-logo, #landing-page-logo-logged {
+    display: flex;
+    align-items: center;
     margin-left: 3%;
     font-family: "Monarcha", sans-serif;
     font-size: 40px;
@@ -56,7 +59,13 @@ h2 {
 }
 
 .modal-nav-bar-link:hover {
+    /* color: white; */
+    text-decoration: underline;
+}
+
+#logo-not-logged:hover {
     color: white;
+    text-decoration: none;
 }
 
 #landing-page-login-button {
@@ -139,34 +148,12 @@ h2 {
     margin: 0 0 0 0;
 }
 
-#my-account-drop-down {
-    /* display: none; */
-    position: absolute;
-    background: white;
-    border: 1px solid #205A94;
-    border-top: none;
-    min-width: 102px;
-    height: 100px;
-    padding: 5px 5px;
-    margin: 0 0 0 18px;
-    z-index: 1;
-    transition: 0.5s ease-out;
-}
-
-.hide {
-    opacity: 0;
-    height: 0 !important;
-}
-
-.drop-down-links {
-    color: red;
-    padding: 10px 0 0 0;
-}
-
-.drop-down-links-buttons {
+#logout-button {
+    color: #205A94;
     background: none;
     border: none;
-    outline: none;
+    font-size: 22px;
+    width: 150px;
 }
 
 #add-collection-button {
@@ -185,11 +172,11 @@ h2 {
     font-size: 22px;
 }
 
-#add-collection-button:hover, #add-item-button:hover {
+#add-collection-button:hover, #add-item-button:hover, #logout-button:hover {
     text-decoration: underline;
 }
 
-#add-collection-button:focus, #add-item-button:focus {
+#add-collection-button:focus, #add-item-button:focus, #logout-button:focus {
     outline: none;
     text-decoration: underline #205A94;
 }
@@ -573,8 +560,8 @@ option:first-of-type {
     padding: 20px;
     border: 1px solid #888;
     width: 100%;
-    max-width: 650px;
-    height: 400px;
+    max-width: 700px;
+    height: 500px;
     font-family: "Montserrat", sans-serif;
     font-size: 16px;
 }
@@ -583,6 +570,7 @@ option:first-of-type {
     display: flex;
     flex-direction: row;
     width: 100%;
+    max-width: 800px;
     height: 250px;
 }
 
@@ -604,7 +592,7 @@ option:first-of-type {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 150px;
+    max-width: 400px;
     margin: 5% 0 0 10%;
 }
 
@@ -652,19 +640,34 @@ option:first-of-type {
     background: none;
 }
 
-#drag-and-drop-container {
-    margin: 20px 0 0 0;
-    width: 200px;
-    height: 200px;
+#drag-drop-container {
+
 }
 
-.drop-box {
+#drag-drop-zone {
+    margin: 20px 0 0 0;
+    width: 100%;
+    max-width: 200px;
+    height: 50px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 50px;
+}
+
+#image-preview {
+    margin: 10px 0 0 20px;
+    width: 100%;
+    max-width: 160px;
+    height: 120px;
+}
+
+/* .drop-box {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 20px 0 0 0;
     border: 3px solid gray;
-    /* padding: 2rem 0 0 0; */
+    padding: 2rem 0 0 0;
     height: 2em;
     width: 12em;
     font-size: 1em;
@@ -672,10 +675,10 @@ option:first-of-type {
 
 .drop-display {
     margin: 10px 0 0 1.5em;
-}
+} */
 
 #create-item-form-button {
-    margin: 20px 0 0 80%;
+    margin: 120px 0 0 72%;
     color: white;
     background-color: #205A94;
     width: 100px;

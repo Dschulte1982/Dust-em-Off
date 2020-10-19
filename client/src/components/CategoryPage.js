@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { categoryActions } from '../actions/categoryActions';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { categoryActions } from '../actions/categoryActions';
 import Search from './Search';
 import Footer from './Footer';
 import CategoryGallery from './CategoryGallery'
@@ -9,8 +9,6 @@ import NavBar from './NavBar';
 
 
 export default function CategoryPage(props) {
-    const dispatch = useDispatch();
-    const category = useSelector(state => state.category.category)
     const location = useLocation();
 
     const [categoryData, setCategoryData] = useState({});
@@ -22,12 +20,11 @@ export default function CategoryPage(props) {
         const res = await fetch(`/api/category/${catId}`);
         if (res.ok) {
         const data = await res.json();
-        console.log(data.values)
         setCategoryData(data)
         }
       }
       getCategory();
-    }, [])
+    }, [location.pathname])
 
     return (
       (!categoryData) ? null :

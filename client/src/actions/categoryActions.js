@@ -1,6 +1,5 @@
 import { categoryTypes } from '../types/categoryTypes';
 import { categoryService } from '../services/categoryService';
-import { history } from '../helpers/history';
 
 export const categoryActions = {
     getCategory
@@ -13,7 +12,6 @@ function getCategory(categoryId) {
         categoryService.getCategory(categoryId)
             .then(category => {
                 dispatch(success(category));
-                console.log(category)
                 // history.push(from);
             },
             error => {

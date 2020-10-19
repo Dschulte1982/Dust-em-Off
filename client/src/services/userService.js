@@ -1,6 +1,3 @@
-import { authHeader } from '../helpers/authHeader';
-import { history } from '../helpers/history';
-
 export const userService = {
     login,
     logout,
