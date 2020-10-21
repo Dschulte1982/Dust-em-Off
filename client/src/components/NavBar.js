@@ -229,7 +229,7 @@ export default function NavBar() {
                 <span id="create-item-form-header">Put Your Item on Display</span>
                 <div id="create-item-form-content">
                 <div id="create-item-form-elements-left">
-                <select
+                {/* <select
                  id="create-item-form-collection"
                  type="text"
                  name="collection"
@@ -239,7 +239,7 @@ export default function NavBar() {
                  >
                 <option value="">Choose Collection</option>
                 {collectionList()}
-                </select>
+                </select> */}
                 <input
                  id="create-item-form-name"
                  type="text"

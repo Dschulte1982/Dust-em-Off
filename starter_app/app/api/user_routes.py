@@ -15,6 +15,7 @@ def index():
 
 @user_routes.route('/login', methods=["POST"])
 def login():
+    print('ATTEMPTED LOGIN')
     data = request.json
     user = User.query.filter(User.username == data["username"] and
                              sha256_crypt.verify(data.password, User.password)).one()
