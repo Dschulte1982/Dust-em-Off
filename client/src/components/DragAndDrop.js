@@ -1,4 +1,5 @@
 import React from "react";
+import { ReactComponent as Uploading } from '../images/upload.svg';
 
 const DragAndDrop = (props) => {
   const { data, dispatch } = props;
@@ -40,16 +41,18 @@ const DragAndDrop = (props) => {
         onDragOver={(event) => handleDragOver(event)}
         onDragEnter={(event) => handleDragEnter(event)}
       >
-        <div id="drag-drop-zone">Upload Image</div>
+        <div id="drag-drop-zone">
+          Upload Image
+          <div id="uploading-icon"><Uploading></Uploading></div>
+        </div>
         <div id="image-preview">
           {data.fileList.map((file) => {
             return (
               <div key={file.name}>
-                {/* <p>{file.name}</p> */}
                 <img
                   src={file.preview}
                   alt=""
-                  style={{ width: 150, height: 150 }}
+                  style={{ width: 100, height: 100 }}
                 />
               </div>
             );

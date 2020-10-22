@@ -26,6 +26,12 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String(100), nullable=False)
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "category": self.category
+        }
+
 
 class Collection(db.Model):
     __tablename__ = 'collections'
@@ -33,19 +39,16 @@ class Collection(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     collection_name = db.Column(db.String(255), nullable=False)
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    itemId = db.Column(db.Integer, db.ForeignKey("items.id"), nullable=False)
     categoryId = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
     user = db.relationship("User")
-    item = db.relationship("Item")
     category = db.relationship("Category")
 
     def to_dict(self):
         return {
           "id": self.id,
           "collection_name": self.collection_name,
-          "category": self.category,
           "userId": self.userId,
-          "itemId": self.itemId
+          "categoryId": self.category
         }
 
 
@@ -54,16 +57,19 @@ class Item(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     item_name = db.Column(db.String(255), nullable=False)
+    collectionId = db.Column(db.Integer, db.ForeignKey("collections.id"), nullable=False)
     likes = db.Column(db.Integer, nullable=True)
     description = db.Column(db.String(400), nullable=True)
     year = db.Column(db.Integer, nullable=True)
     image = db.Column(db.Binary, nullable=True)
+    collection = db.relationship("Collection")
 
     def to_dict(self):
         return {
           "id": self.id,
-          "collection_name": self.collection_name,
-          "category": self.category,
-          "userId": self.userId,
-          "itemId": self.itemId
+          "item_name": self.item_name,
+          "likes": self.likes,
+          "description": self.description,
+          "year": self.year,
+          "image": self.image
         }
