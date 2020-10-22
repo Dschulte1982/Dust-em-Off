@@ -1,6 +1,7 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import NavBar from './NavBar';
+import { itemActions } from '../actions/itemActions';
 import star_wars_banner from '../images/star_wars_banner.jpg';
 import profile_photo_luke_skywalker from '../images/profile_photo_luke_skywalker.png';
 import GalleryFrame from './GalleryFrame';
@@ -8,6 +9,13 @@ import Footer from './Footer';
 
 export default function ProfilePage() {
     const user = useSelector(state => state.auth.user)
+    const dispatch = useDispatch();
+    useEffect(() => {
+      function loadCollections() {
+        dispatch(itemActions.getCollections(user.id))
+      }
+      loadCollections();
+    }, [dispatch, user.id])
     return (
         <>
           <div id="profile-page-master">

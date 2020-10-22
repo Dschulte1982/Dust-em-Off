@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../actions/userActions';
+import { itemActions } from '../actions/itemActions';
 // import { itemActions } from '../actions/itemActions';
 import DragDropBox from './DragAndDrop';
 
@@ -9,7 +10,14 @@ export default function NavBar() {
 
     const [inputs, setInputs] = useState({
         username: '',
-        password: ''
+        password: '',
+        collection: '',
+        category: '',
+        nameItem: '',
+        collectionItem: '',
+        descriptionItem: '',
+        yearItem: '',
+        conditionItem: ''
     });
 
     const [user, setUser] = useState({
@@ -19,12 +27,18 @@ export default function NavBar() {
         password: ''
     });
 
+    // const [item, setItem] = useState({
+    //   collection: ''
+    // })
+
+
     // const activeUser = useSelector(state => state.auth.user)
 
     // const [submitted, setSubmitted] = useState(false);
-    const {username, password, collection, category} = inputs;
+    const {username, password, collection, category, nameItem, collectionItem, descriptionItem, conditionItem, yearItem} = inputs;
     const loggingIn = useSelector(state => state.auth.loggingIn)
     const loggedIn = useSelector(state => state.auth.loggedIn)
+    const collectionList = useSelector(state => state.collection.collections)
     // const registering = useSelector(state => state.registration.registering)
     const location = useLocation();
 
@@ -63,6 +77,7 @@ export default function NavBar() {
         const { name, value } = e.target;
         setInputs(inputs => ({ ...inputs, [name]: value }));
         setUser(user => ({ ...user, [name]: value }));
+        console.log(value)
     }
 
     const handleSubmit = (e) => {
@@ -72,6 +87,11 @@ export default function NavBar() {
         if (username && password) {
             const { from } = location.pathname || { from: { pathname: "/" } };
             dispatch(userActions.login(username, password, from))
+        }
+
+        if (collection && category) {
+          console.log(collection, category)
+          // dispatch(itemActions.createCollection(collection, category))
         }
     }
 
@@ -97,17 +117,6 @@ export default function NavBar() {
 
       dispatch(userActions.logout());
     }
-
-    // const openDropDown = (e) => {
-    //   e.preventDefault();
-
-    //   const dropdown = document.getElementById("my-account-drop-down");
-    //   if (dropdown.className === "hide") {
-    //   dropdown.className = "";
-    //   } else {
-    //     dropdown.className = "hide"
-    //   }
-    // }
 
     const openCreateModal = (e) => {
       e.preventDefault();
@@ -142,17 +151,27 @@ export default function NavBar() {
     const years = () => {
         const num_years = [];
         for (let i = 1900; i < 2021; i++) {
-          num_years.unshift(<option key={Math.random() * (1000 - 1) + 1} value="">{i.toString()}</option>);
+          num_years.unshift(<option key={Math.random() * (1000 - 1) + 1} value={i}>{i.toString()}</option>);
         }
         return num_years;
       }
 
-    const collectionList = (e) => {
-      let collection_list = []
-      // for (collection in activeCollection.collections) {
-      //   collection_list.push(collection)
-      // }
+    const collectionSelection = () => {
+      const collection_list = []
+      if (collectionList) {
+      // const master = collectionList.collections
+      const list = collectionList.collections
+      // list.forEach(item => collection_list.push(<option key={Math.random()} value={item}>{item}</option>));
+      list.forEach(item => collection_list.push(<option key={Math.random()} value={item}>{item}</option>));
+    }
       return collection_list;
+    }
+
+    const handleValue = (e) => {
+      const field = document.getElementById(`${e.target.id}`);
+      // const field = e.target.id;
+      field.value = e.target.value;
+      console.log(e.target.value)
     }
 
 
@@ -229,40 +248,38 @@ export default function NavBar() {
                 <span id="create-item-form-header">Put Your Item on Display</span>
                 <div id="create-item-form-content">
                 <div id="create-item-form-elements-left">
-                {/* <select
+                <select
                  id="create-item-form-collection"
-                 type="text"
-                 name="collection"
+                 name="collectionItem"
                  placeholder="Collection"
-                //  value={itemName}
+                 value={collectionItem}
                  onChange={handleChange}
                  >
                 <option value="">Choose Collection</option>
-                {collectionList()}
-                </select> */}
+                {collectionSelection()}
+                </select>
                 <input
                  id="create-item-form-name"
                  type="text"
-                 name="name"
+                 name="nameItem"
                  placeholder="Item Name"
-                //  value={itemName}
+                 value={nameItem}
                  onChange={handleChange}
                  />
                  <textarea id="create-item-form-description"
                  placeholder="Item Description"
                  type="textarea"
-                 name="description"
-                 onChange={handleChange}
+                 name={descriptionItem}
+                 onChange={handleValue}
                  >
                  </textarea>
                 </div>
                 <div id="create-item-form-elements-right">
                 <select
                  id="create-item-form-year"
-                 type="select"
-                 name="year"
+                 name="yearItem"
                  placeholder=""
-                //  value={year}
+                 value={yearItem}
                  onChange={handleChange}
                  >
                    <option value="">Year</option>
@@ -271,9 +288,9 @@ export default function NavBar() {
                  <select
                  id="create-item-form-condition"
                  type="select"
-                 name="condition"
+                 name="conditionItem"
                  placeholder=""
-                //  value={condition}
+                 value={conditionItem}
                  onChange={handleChange}
                  >
                    <option value="">Item Condition</option>

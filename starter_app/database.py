@@ -21,10 +21,11 @@ with app.app_context():
     star_wars = Category(category='Star Wars')
     trading_cards = Category(category='Trading Cards')
     video_games = Category(category='Video Games')
-    demo_item_1 = Item(item_name='Amazing Spider-Man #1', likes="1", description="A classic!", year='1963')
-    demo_item_2 = Item(item_name='Millenium Falcon', likes='2', description='Vintage Millenium Falcon playset', year='1979')
-    demo_comics = Collection(collection_name="Demo's Comics", categoryId="1", userId='1', itemId='1')
-    demo_star_wars = Collection(collection_name="Star Wars Figures", categoryId='3', userId='1', itemId='2')
+    demo_comics = Collection(collection_name="Demo's Comics", categoryId="1", userId='1')
+    demo_star_wars = Collection(collection_name="Star Wars Figures", categoryId='3', userId='1')
+    demo_item_1 = Item(item_name='Amazing Spider-Man #1', likes="1", collectionId="1", description="A classic!", year='1963')
+    demo_item_2 = Item(item_name='Millenium Falcon', likes='2', collectionId="2", description='Vintage Millenium Falcon playset', year='1979')
+
 
     db.session.add(demo)
     db.session.add(maggie)

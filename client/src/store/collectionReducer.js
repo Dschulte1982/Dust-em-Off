@@ -6,14 +6,10 @@ const initialState = user ? { loggedIn: true, user } : {};
 export function collectionReducer(state = initialState, action) {
     switch(action.type) {
         case collectionTypes.GETONE_REQUEST:
-            return {
-                loggingIn: true,
-                user: action.user
-            };
+            return {};
         case collectionTypes.GETONE_SUCCESS:
             return {
-                loggedIn: true,
-                user: action.user
+                collection: action.collection
             };
         case collectionTypes.GETONE_FAILURE:
             return {};
@@ -21,7 +17,7 @@ export function collectionReducer(state = initialState, action) {
             return {};
         case collectionTypes.GETALL_SUCCESS:
             return {
-                collection: action.collections
+                collections: action.collections
             };
         case collectionTypes.GETALL_FAILURE:
             return {};

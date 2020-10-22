@@ -560,7 +560,7 @@ option:first-of-type {
     padding: 20px;
     border: 1px solid #888;
     width: 100%;
-    max-width: 700px;
+    max-width: 600px;
     height: 500px;
     font-family: "Montserrat", sans-serif;
     font-size: 16px;
@@ -592,14 +592,15 @@ option:first-of-type {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 400px;
+    max-width: 20em;
     margin: 5% 0 0 10%;
 }
 
 #create-item-form-name,
 #create-item-form-description,
 #create-item-form-year,
-#create-item-form-condition {
+#create-item-form-condition,
+#create-item-form-collection {
     border-top: none;
     border-left: none;
     border-right: none;
@@ -611,7 +612,7 @@ option:first-of-type {
 
 #create-item-form-name {
     padding: 0 0 5px 5px;
-    margin: 0 0 0 0;
+    margin: 2em 0 0 0;
 }
 
 #create-item-form-description {
@@ -628,6 +629,12 @@ option:first-of-type {
     width: 200px;
 }
 
+#create-item-form-collection {
+    padding: 0 0 5px 5px;
+    border-bottom: 2px solid #454545;
+    width: 100%;
+}
+
 #create-item-form-condition {
     padding: 0 0 5px 5px;
     margin: 2em 0 0 0;
@@ -640,18 +647,18 @@ option:first-of-type {
     background: none;
 }
 
-#drag-drop-container {
-
-}
-
 #drag-drop-zone {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     margin: 20px 0 0 0;
     width: 100%;
     max-width: 200px;
-    height: 50px;
+    height: 110px;
     border: 1px solid black;
     text-align: center;
-    line-height: 50px;
+    /* line-height: 100px; */
 }
 
 #image-preview {
@@ -659,6 +666,13 @@ option:first-of-type {
     width: 100%;
     max-width: 160px;
     height: 120px;
+}
+
+#uploading-icon {
+    width: 25px;
+    height: 25px;
+    margin: 0 0 0 10px;
+    opacity: 0.5;
 }
 
 /* .drop-box {
@@ -678,7 +692,7 @@ option:first-of-type {
 } */
 
 #create-item-form-button {
-    margin: 120px 0 0 72%;
+    margin: 130px 0 0 72%;
     color: white;
     background-color: #205A94;
     width: 100px;
