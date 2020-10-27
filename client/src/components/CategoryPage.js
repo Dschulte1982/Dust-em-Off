@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { categoryActions } from '../actions/categoryActions';
+import './CategoryPage.css';
 import Search from './Search';
 import Footer from './Footer';
 import CategoryGallery from './CategoryGallery'

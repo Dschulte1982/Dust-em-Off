@@ -1,4 +1,5 @@
 import React from 'react';
+import './LandingPage.css';
 import { main_body } from '../content/content';
 import NavBar from '../components/NavBar';
 import { withRouter } from 'react-router-dom';

@@ -4,6 +4,9 @@ import {ReactComponent as heart } from '../images/heart.svg';
 
 export default function GalleryFrame() {
 
+  //Function to sort - get information from Items and sort by most likes
+  // Slice of state that holds items, useSelector to subscribe to that slice of state.
+
     return (
         <>
         <div className="category-gallery-card">
