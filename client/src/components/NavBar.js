@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../actions/userActions';
-import { itemActions } from '../actions/itemActions';
-// import { itemActions } from '../actions/itemActions';
 import DragDropBox from './DragAndDrop';
 
 export default function NavBar() {

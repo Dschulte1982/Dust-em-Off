@@ -1,0 +1,219 @@
+/* Landing Page CSS */
+
+#main-content-body-container {
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 960px;
+    max-height: 960px;
+    height: 100%;
+    width: 100%;
+}
+
+#main-content-desc-container {
+    width: 100%;
+    max-width: 520px;
+    margin: 0% 10%;
+    overflow-wrap: break-word;
+    margin-top: 8%;
+}
+
+#main-content-header-1 {
+    font-family: inherit;
+    font-size: 16px;
+    color: #205A94;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2%;
+}
+
+#main-content-header-2 {
+    font-family: "Monarcha", sans-serif;
+    font-size: 32px;
+    color: white;
+    font-weight: 700;
+}
+
+#main-content-body {
+    font-family: inherit;
+    font-size: 1.5em;
+    color: #205A94;
+    margin-top: 5%;
+}
+
+#main-content-button {
+    font-family: inherit;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #205A94;
+    max-width: 300px;
+    width: 100%;
+    height: 100%;
+    min-height: 80px;
+    background: transparent;
+    padding: 10px;
+    border: 4px solid #205A94;
+    margin-top: 10%;
+}
+
+#main-content-button:hover {
+    color: white;
+    background-color: #205A94;
+}
+
+/* Landing Page Featured Section */
+
+#main-featured {
+    display: flex;
+    flex-direction: column;
+    min-height: 660px;
+    max-height: 960px;
+    height: 100%;
+    width: 100%;
+    color: #454545;
+    margin: 100px 0;
+}
+
+#main-featured-collection {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+#main-featured-image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family: "Montserrate", sans-serif;
+    margin-left: 5%;
+    width: 100%;
+}
+
+#main-featured-header {
+    font-family: "Montserrat", sans-serif;
+    font-size: 50px;
+    color:#205A94;
+    font-weight: 700;
+    margin-top: 50px;
+    margin-left: 10%;
+    border-bottom: 1px solid#454545;
+    margin-right: 10%;
+    padding-bottom: 10px;
+}
+
+#main-featured-content-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 10%;
+}
+
+#main-featured-profile-header {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+}
+
+#main-featured-image {
+    max-width: 75%;
+    height: auto;
+    margin-left: 10%;
+    box-shadow: 0px 5px 10px black;
+}
+
+#main-featured-profile-image {
+    max-width: 50px;
+    height: auto;
+}
+
+#featured-profile-img {
+    border-radius: 100px;
+}
+
+#featured-profile-user {
+    font-family: inherit;
+    font-size: 25px;
+    color: inherit;
+    align-self: center;
+    margin-left: 2%;
+}
+
+#featured-item-count {
+    font-family: inherit;
+    color: inherit;
+    font-size: 20px;
+}
+
+#main-featured-item-container {
+    display: flex;
+    flex-direction: column;
+    font-family: inherit;
+    margin: 10% 10% 0 0;
+}
+
+#main-featured-item-title {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 35px;
+}
+
+#main-featured-item-description {
+    font-family: inherit;
+    color: inherit;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+/* Landing Page Explore Feature */
+
+#explore-collections-master {
+    min-height: 400px;
+    width: 100%;
+    background-color: #F4F4F4;
+}
+
+#search-master-container {
+    width: 100%;
+    height: 100px;
+    padding: 40px 0 0 0;
+}
+
+#search-bar {
+    width: 100%;
+    height: 100%;
+    font-size: 40px;
+    border-bottom: 1px solid #454545;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background: transparent;
+    background-repeat: no-repeat;
+    background-position: 25px 33px;
+    background-size: 35px;
+    padding-left: 80px;
+    opacity: 80%;
+}
+
+#search-bar::placeholder {
+    opacity: 75%;
+}
+
+#main-search-bar-container {
+    margin: 0 10%;
+}
+
+#main-categories-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    padding: 20px 0 50px 0;
+    margin: 0 10%;
+}
+
+.main-categories {
+    padding: 20px 0 0 0;
+}
