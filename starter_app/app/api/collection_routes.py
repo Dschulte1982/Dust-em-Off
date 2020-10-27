@@ -21,6 +21,23 @@ def getCollections(userId):
     return {"collections": collectionList}
 
 
+@collection_routes.route('<userId>/new-collection', methods=["POST"])
+def newCollection(userId):
+    data = request.json
+    collection = Collection(
+        collection_name=data["collection_name"]
+        userId=userId
+        categoryId=data["categoryId"]
+    )
+    db.session.add(collection)
+    db.session.commit()
+    collections = db.session.query(Collection).filter(Collection.userId == userId)
+    collections_dict = {}
+    for collection in collections:
+        collections_dict[collection.id] = collection.to_dict()
+    return {'collections': collections_dict}, 200
+
+
 @collection_routes.route("item/<itemId>", methods=["GET"])
 def getItem(itemId):
     item = Item.query.filter(Item.id == itemId).first()
