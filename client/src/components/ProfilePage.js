@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProfilePage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import NavBar from './NavBar';
@@ -10,6 +10,8 @@ import Footer from './Footer';
 
 export default function ProfilePage() {
     const user = useSelector(state => state.auth.user)
+    const [categories, setCategories] = useState({});
+
     const dispatch = useDispatch();
     useEffect(() => {
       function loadCollections() {
@@ -17,6 +19,7 @@ export default function ProfilePage() {
       }
       loadCollections();
     }, [dispatch, user.id])
+
     return (
         <>
           <div id="profile-page-master">
@@ -45,7 +48,7 @@ export default function ProfilePage() {
               <div id="profile-category-1-container">
                 <div id="profile-category-1-header-container" className="profile-header-container">
                   <div id="profile-category-1-header" className="profile-category-header">Star Wars</div>
-                  <button id="profile-category-1-show" className="profile-category-show">Show More</button>
+                  <button id="profile-category-1-show" className="profile-category-show">Show All</button>
                 </div>
                 <div id="profile-category-1-content" className="profile-category-content-container">
                   <div id="profile-user-content-1-1" className="profile-content-gallery">{GalleryFrame()}</div>
@@ -57,7 +60,7 @@ export default function ProfilePage() {
               <div id="profile-category-2-container">
                 <div id="profile-category-2-header-container" className="profile-header-container">
                   <div id="profile-category-2-header" className="profile-category-header">Comic Books</div>
-                  <button id="profile-category-2-show" className="profile-category-show">Show More</button>
+                  <button id="profile-category-2-show" className="profile-category-show">Show All</button>
                 </div>
                 <div id="profile-category-2-content">
                   <div id="profile-user-content-1-2" className="profile-content-gallery">{GalleryFrame()}</div>

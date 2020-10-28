@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { userActions } from '../actions/userActions';
+import { itemActions } from '../actions/itemActions';
 import DragDropBox from './DragAndDrop';
 
 export default function NavBarLoggedIn() {
@@ -18,7 +19,8 @@ export default function NavBarLoggedIn() {
 
   const {collection, category, nameItem, collectionItem, descriptionItem, conditionItem, yearItem} = inputs;
 
-  const collectionList = useSelector(state => state.collection.collections)
+  const collectionList = useSelector(state => state.collection.collections);
+  const user = useSelector(state => state.auth.user);
 
   const dispatch = useDispatch();
 
@@ -31,8 +33,12 @@ const handleSubmit = (e) => {
   e.preventDefault();
 
   if (collection && category) {
-    console.log(collection, category)
-    // dispatch(itemActions.createCollection(collection, category))
+    dispatch(itemActions.createCollection(user.id, collection, category))
+  }
+
+  if (nameItem && collectionItem) {
+    // console.log(nameItem, collectionItem, descriptionItem, conditionItem, yearItem)
+    dispatch(itemActions.createItem(nameItem, collectionItem, descriptionItem, conditionItem, yearItem));
   }
 }
 
@@ -76,11 +82,13 @@ const handleSubmit = (e) => {
   const collectionSelection = () => {
     const collection_list = []
     if (collectionList) {
-    // const master = collectionList.collections
-    const list = collectionList.collections
-    // list.forEach(item => collection_list.push(<option key={Math.random()} value={item}>{item}</option>));
-    list.forEach(item => collection_list.push(<option key={Math.random()} value={item}>{item}</option>));
-  }
+      const total_collections = collectionList.collections
+
+    for(const item in total_collections) {
+      const categoryName = total_collections[item]
+      collection_list.push(<option key={Math.random()} value={categoryName.id}>{categoryName.collection_name}</option>)
+      }
+    }
     return collection_list;
   }
 
@@ -140,18 +148,19 @@ const handleSubmit = (e) => {
                  onChange={handleChange}
                  >
                    <option value="">Category</option>
-                   <option value="Antiques">Antiques</option>
-                   <option value="Comic Books">Comic Books</option>
-                   <option value="Dolls & Toys">Dolls & Toys</option>
-                   <option value="Sport Memorabilia">Sports Memorabilia</option>
-                   <option value="Star Wars">Star Wars</option>
-                   <option value="Trading Cards">Trading Cards</option>
-                   <option value="Vinyl Records">Vinyl Records</option>
+                   <option value="1">Antiques</option>
+                   <option value="2">Comic Books</option>
+                   <option value="3">Dolls & Toys</option>
+                   <option value="4">Sports Memorabilia</option>
+                   <option value="5">Star Wars</option>
+                   <option value="6">Trading Cards</option>
+                   <option value="7">Video Games</option>
+                   <option value="8">Vinyl Records</option>
                  </select>
                  </div>
                 <button
                  id="create-form-next-button"
-                 type="submit" onClick={openItemModal}>
+                 type="submit">
                      Next <i className="right-arrow"></i>
                 </button>
               </form>
@@ -184,8 +193,9 @@ const handleSubmit = (e) => {
                  />
                  <textarea id="create-item-form-description"
                  placeholder="Item Description"
-                 type="textarea"
-                 name={descriptionItem}
+                 type="text"
+                 name="descriptionItem"
+                 value={descriptionItem}
                  onChange={handleChange}
                  >
                  </textarea>
@@ -212,10 +222,10 @@ const handleSubmit = (e) => {
                    <option value="">Item Condition</option>
                    <option value="Mint">Mint</option>
                    <option value="Near Mint">Near Mint</option>
-                   <option value="Dolls & Toys">Good</option>
-                   <option value="Sport Memorabilia">Fair</option>
-                   <option value="Star Wars">Poor</option>
-                   <option value="Trading Cards">Damaged</option>
+                   <option value="Good">Good</option>
+                   <option value="Fair">Fair</option>
+                   <option value="Poor">Poor</option>
+                   <option value="Damaged">Damaged</option>
                  </select>
                  <div id="drag-and-drop-container">{<DragDropBox />}</div>
                  </div>

@@ -9,6 +9,12 @@ export function itemReducer (state={}, action) {
         }
       case itemTypes.GETONE_FAILURE:
         return {};
+      case itemTypes.CREATE_SUCCESS:
+          return {
+            items: action.items
+          };
+      case itemTypes.CREATE_FAILURE:
+        return {};
       default:
         return state;
     }

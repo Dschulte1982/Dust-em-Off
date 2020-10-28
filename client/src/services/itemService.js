@@ -1,5 +1,6 @@
 export const itemService = {
-    getItem
+    getItem,
+    createItem
 }
 
 function getItem(itemId) {
@@ -8,6 +9,19 @@ function getItem(itemId) {
         .then(item => {
             return item
         });
+}
+
+function createItem(name, collectionId, description, condition, year, image) {
+    const requestParams = {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ name, description, condition, year, image })
+    };
+    return fetch(`/api/collection/${collectionId}/new-item`, requestParams)
+        .then(handleResponse)
+        .then(items => {
+            return items
+        })
 }
 
 function handleResponse(response) {

@@ -5,6 +5,7 @@ import { collectionService } from '../services/collectionService';
 
 export const itemActions = {
     getItem,
+    createItem,
     getCollections,
     createCollection
 }
@@ -38,9 +39,9 @@ function getCollections(userId) {
     function failure(error) { return { type: collectionTypes.GETALL_FAILURE, error } }
 }
 
-function createCollection(name, category) {
+function createCollection(userId, collection_name, categoryId) {
     return dispatch => {
-        collectionService.createOne(name, category)
+        collectionService.createOne(userId, collection_name, categoryId)
             .then(collection => {
                 dispatch(success(collection));
             },
@@ -50,4 +51,18 @@ function createCollection(name, category) {
     }
     function success(collection) {return { type: collectionTypes.CREATE_SUCCESS, collection } }
     function failure(error) { return { type: collectionTypes.CREATE_FAILURE, error } }
+}
+
+function createItem(name, collectionId, description, condition, year, image) {
+    return dispatch => {
+        itemService.createItem(name, collectionId, description, condition, year, image)
+            .then(items => {
+                dispatch(success(items));
+            },
+            error => {
+                dispatch(failure(error.toString()))
+            })
+    }
+    function success(items) { return { type: itemTypes.CREATE_SUCCESS, items } }
+    function failure(error) { return { type: itemTypes.CREATE_FAILURE, error } }
 }

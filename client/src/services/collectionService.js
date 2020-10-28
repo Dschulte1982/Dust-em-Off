@@ -1,6 +1,7 @@
 export const collectionService = {
     // getCollection,
     getAllCollections,
+    createOne
     // deleteCollection
 };
 
@@ -19,7 +20,18 @@ export const collectionService = {
 //             return user;
 //         });
 // }
-
+function createOne(userId, collection_name, categoryId) {
+        const requestParams = {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ collection_name, categoryId })
+    };
+    return fetch(`/api/collection/${userId}/new-collection`, requestParams)
+        .then(handleResponse)
+        .then(collections => {
+            return collections
+        })
+}
 
 function getAllCollections(userId) {
     return fetch(`/api/collection/${userId}/all`)
