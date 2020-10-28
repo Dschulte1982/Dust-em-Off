@@ -1,9 +1,9 @@
 import { categoryTypes } from '../types/categoryTypes';
 
-let user = JSON.parse(localStorage.getItem('user'));
-const initialState = user ? { loggedIn: true, user } : {};
+// let user = JSON.parse(localStorage.getItem('user'));
+// const initialState = user ? { loggedIn: true, user } : {};
 
-export function categoryReducer(state = initialState, action) {
+export function categoryReducer(state = {}, action) {
     switch(action.type) {
         case categoryTypes.GETONE_REQUEST:
             return {
@@ -25,7 +25,7 @@ export function categoryReducer(state = initialState, action) {
         case categoryTypes.GETALL_SUCCESS:
             return {
                 found: true,
-                categories: action.categoreis
+                categories: action.categories
             };
         case categoryTypes.GETALL_FAILURE:
             return {};

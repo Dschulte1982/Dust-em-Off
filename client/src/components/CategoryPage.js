@@ -7,7 +7,7 @@ import CategoryGallery from './CategoryGallery'
 import NavBar from './NavBar';
 
 
-export default function CategoryPage(props) {
+export default function CategoryPage() {
     const location = useLocation();
 
     const [categoryData, setCategoryData] = useState({});
