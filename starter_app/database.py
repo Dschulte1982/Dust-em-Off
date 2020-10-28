@@ -23,8 +23,8 @@ with app.app_context():
     video_games = Category(category='Video Games')
     demo_comics = Collection(collection_name="Demo's Comics", categoryId="1", userId='1')
     demo_star_wars = Collection(collection_name="Star Wars Figures", categoryId='3', userId='1')
-    demo_item_1 = Item(item_name='Amazing Spider-Man #1', likes="1", collectionId="1", description="A classic!", year='1963')
-    demo_item_2 = Item(item_name='Millenium Falcon', likes='2', collectionId="2", description='Vintage Millenium Falcon playset', year='1979')
+    demo_item_1 = Item(item_name='Amazing Spider-Man #1', likes="1", collectionId="1", description="A classic!", year='1963', condition="Good")
+    demo_item_2 = Item(item_name='Millenium Falcon', likes='2', collectionId="2", description='Vintage Millenium Falcon playset', year='1979', condition="Good")
 
 
     db.session.add(demo)
