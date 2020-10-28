@@ -13,25 +13,28 @@ def index():
 
 @collection_routes.route('<userId>/all')
 def getCollections(userId):
-    collectionList = []
-    collections = Collection.query.filter(Collection.userId == userId).all()
+    # collectionList = []
+    collections = db.session.query(Collection).filter(Collection.userId == userId).all()
+    collections_dict = {}
     if collections:
         for collection in collections:
-            collectionList.append(collection.collection_name)
-    return {"collections": collectionList}
+            # collectionList.append(collection.collection_name)
+            collections_dict[collection.id] = collection.to_dict()
+    # return {"collections": collectionList}
+    return {"collections": collections_dict}, 200
 
 
 @collection_routes.route('<userId>/new-collection', methods=["POST"])
 def newCollection(userId):
     data = request.json
     collection = Collection(
-        collection_name=data["collection_name"]
-        userId=userId
+        collection_name=data["collection_name"],
+        userId=userId,
         categoryId=data["categoryId"]
     )
     db.session.add(collection)
     db.session.commit()
-    collections = db.session.query(Collection).filter(Collection.userId == userId)
+    collections = db.session.query(Collection).filter(Collection.userId == userId).all()
     collections_dict = {}
     for collection in collections:
         collections_dict[collection.id] = collection.to_dict()
@@ -44,16 +47,23 @@ def getItem(itemId):
     return {"item": str(item.item_name)}
 
 
-@collection_routes.route('/new-item', methods=['POST'])
-def postItem():
+@collection_routes.route('<collectionId>/new-item', methods=['POST'])
+def postItem(collectionId):
     data = request.json
+    print(data)
     if data:
-        postItem = Item(item_name=data["item_name"],
-                        likes=0,
-                        description=data["description"],
-                        year=data["year"],
-                        image=data["image"])
-        db.session.add(postItem)
+        item = Item(item_name=data["name"],
+                    collectionId=collectionId,
+                    likes=0,
+                    description=data["description"],
+                    year=data["year"],
+                    condition=data["condition"],
+                    # image=data["image"]
+                    )
+        db.session.add(item)
         db.session.commit()
-        createdItem = Item.query.filter(Item.item_name == data["item_name"]).first()
-    return {"id": createdItem.id, "item_name": createdItem.item_name}
+        items = db.session.query(Item).filter(Item.collectionId == collectionId).all()
+        items_dict = {}
+        for item in items:
+            items_dict[item.id] = item.to_dict()
+        return {"items": items_dict}, 200

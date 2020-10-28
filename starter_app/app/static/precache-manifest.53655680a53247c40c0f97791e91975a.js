@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b3af944e922705c4f68d9de9d3610607",
+    "revision": "4cd42705b8fbdce7d46844238a232ab5",
     "url": "/index.html"
   },
   {
-    "revision": "f40abbbdd6646e2dbd8d",
-    "url": "/static/css/main.d02a4112.chunk.css"
+    "revision": "eaf415ee6e12a4019696",
+    "url": "/static/css/main.9efcc069.chunk.css"
   },
   {
-    "revision": "212d4cc3f62a190f1d68",
-    "url": "/static/js/2.901a8a6b.chunk.js"
+    "revision": "769ffc7c7e984e2f45a1",
+    "url": "/static/js/2.e6800189.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/static/js/2.901a8a6b.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.e6800189.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f40abbbdd6646e2dbd8d",
-    "url": "/static/js/main.9ab80423.chunk.js"
+    "revision": "eaf415ee6e12a4019696",
+    "url": "/static/js/main.9b934d6c.chunk.js"
   },
   {
     "revision": "9b4e396c183e42c1fa5c",
@@ -42,6 +42,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ce97ecfc3abfe5bec525f3764689bc7e",
     "url": "/static/media/star_wars_banner.ce97ecfc.jpg"
+  },
+  {
+    "revision": "22c3a0b1b21bf0260d36b0a9123973d1",
+    "url": "/static/media/upload.22c3a0b1.svg"
   },
   {
     "revision": "077524feaf946ff370d407271ec97b8b",

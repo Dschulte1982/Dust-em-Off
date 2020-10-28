@@ -48,7 +48,7 @@ class Collection(db.Model):
           "id": self.id,
           "collection_name": self.collection_name,
           "userId": self.userId,
-          "categoryId": self.category
+          "categoryId": self.categoryId
         }
 
 
@@ -61,6 +61,7 @@ class Item(db.Model):
     likes = db.Column(db.Integer, nullable=True)
     description = db.Column(db.String(400), nullable=True)
     year = db.Column(db.Integer, nullable=True)
+    condition = db.Column(db.String(100), nullable=True)
     image = db.Column(db.Binary, nullable=True)
     collection = db.relationship("Collection")
 
@@ -71,5 +72,6 @@ class Item(db.Model):
           "likes": self.likes,
           "description": self.description,
           "year": self.year,
+          "condition": self.condition,
           "image": self.image
         }
