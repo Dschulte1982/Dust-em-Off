@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {ReactComponent as heart } from '../images/heart.svg';
 
 
 export default function GalleryFrame() {
+
+  const user = useSelector(state => state.auth.user);
+  // const items = useSelector(state => state.)
 
   //Function to sort - get information from Items and sort by most likes
   // Slice of state that holds items, useSelector to subscribe to that slice of state.
@@ -20,9 +24,7 @@ export default function GalleryFrame() {
             </div>
             <div id="category-gallery-likes-container">
               <div id="category-gallery-likes">
-                {/* <svg width="20" height="20"> */}
                   <img href={heart} alt="" width="20" height="20" object-fit="contain"/>
-                {/* </svg> */}
               </div>
               <div id="category-gallery-likes-count">115</div>
             </div>

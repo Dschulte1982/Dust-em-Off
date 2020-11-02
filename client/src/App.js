@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Switch, Route, Router, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import LandingPage from './components/LandingPage';
 import { history } from './helpers/history';
 import CategoryPage from './components/CategoryPage';
 import ProfilePage from './components/ProfilePage';
-// import { userActions } from './actions/userActions';
+import { itemActions } from './actions/itemActions';
 
 
 // const isLoggedIn = () => {
@@ -23,22 +23,18 @@ const protectedRoute = ({ component: Component, loggedIn, ...rest }) => {
   const ConnectedProtectedRoute = connect(mapStateToProps, null)(protectedRoute);
 
 function App() {
-  // const [loading, setLoading] = useState(true);
-  // const dispatch = useDispatch();
-  // // useEffect(() => {
-  // //   const loadUser = async () => {
-  // //     // enter your back end route to get the current user
-  // //     const res = await fetch("/api/users/current");
-  // //     if (res.ok) {
-  // //       res.data = await res.json(); // current user info - obj with key of user
-  // //       dispatch(userActions.setUser(res.data.userId, res.data.username, res.data.email ));
-  // //     }
-  // //     setLoading(false);
-  // //   }
-  // //   loadUser();
-  // // }, [dispatch]);
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
-  // if(loading) return null;
+  useEffect(() => {
+    const loadItems = () => {
+      dispatch(itemActions.getAllItems()); // Enter the back-end and add all items to the store.
+      setLoading(false); // Change loading status so that the application renders.
+    }
+    loadItems();
+  }, [dispatch]);
+
+  if(loading) return null;
   return (
       <Router history={history}>
         <Switch>

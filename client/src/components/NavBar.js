@@ -7,7 +7,6 @@ export default function NavBar() {
     const NavBarIn = NavBarLoggedIn();
     const NavBarOut = NavBarLoggedOut();
     const loggedIn = useSelector(state => state.auth.loggedIn)
-    const testthing = "test thing"
 
     if (loggedIn) {
       return (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './ProfilePage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import NavBar from './NavBar';
@@ -10,7 +10,6 @@ import Footer from './Footer';
 
 export default function ProfilePage() {
     const user = useSelector(state => state.auth.user)
-    const [categories, setCategories] = useState({});
 
     const dispatch = useDispatch();
     useEffect(() => {
