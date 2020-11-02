@@ -1,5 +1,6 @@
 export const itemService = {
     getItem,
+    getAllItems,
     createItem
 }
 
@@ -9,6 +10,14 @@ function getItem(itemId) {
         .then(item => {
             return item
         });
+}
+
+function getAllItems() {
+    return fetch(`/api/collection/item/all`)
+        .then(handleResponse)
+        .then(items => {
+            return items
+        })
 }
 
 function createItem(name, collectionId, description, condition, year, image) {

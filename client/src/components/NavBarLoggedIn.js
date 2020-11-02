@@ -34,11 +34,14 @@ const handleSubmit = (e) => {
 
   if (collection && category) {
     dispatch(itemActions.createCollection(user.id, collection, category))
+    const modal = document.getElementById("create-modal")
+    modal.style.display = "none";
   }
 
   if (nameItem && collectionItem) {
-    // console.log(nameItem, collectionItem, descriptionItem, conditionItem, yearItem)
     dispatch(itemActions.createItem(nameItem, collectionItem, descriptionItem, conditionItem, yearItem));
+    const modal = document.getElementById("create-item-modal");
+    modal.style.display = "none";
   }
 }
 
@@ -160,7 +163,8 @@ const handleSubmit = (e) => {
                  </div>
                 <button
                  id="create-form-next-button"
-                 type="submit">
+                 type="submit"
+                >
                      Next <i className="right-arrow"></i>
                 </button>
               </form>

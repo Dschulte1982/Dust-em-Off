@@ -69,6 +69,7 @@ class Item(db.Model):
         return {
           "id": self.id,
           "item_name": self.item_name,
+          "collectionId": self.collectionId,
           "likes": self.likes,
           "description": self.description,
           "year": self.year,

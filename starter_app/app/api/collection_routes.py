@@ -47,6 +47,15 @@ def getItem(itemId):
     return {"item": str(item.item_name)}
 
 
+@collection_routes.route("item/all", methods=["GET"])
+def getAllItems():
+    items = db.session.query(Item).all()
+    items_dict = {}
+    for item in items:
+        items_dict[item.id] = item.to_dict()
+    return {"items": items_dict}, 200
+
+
 @collection_routes.route('<collectionId>/new-item', methods=['POST'])
 def postItem(collectionId):
     data = request.json

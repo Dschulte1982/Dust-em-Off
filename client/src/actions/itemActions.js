@@ -7,7 +7,8 @@ export const itemActions = {
     getItem,
     createItem,
     getCollections,
-    createCollection
+    createCollection,
+    getAllItems
 }
 
 function getItem(itemId) {
@@ -23,6 +24,20 @@ function getItem(itemId) {
     }
     function success(item) { return { type: itemTypes.GETONE_SUCCESS, item } }
     function failure(error) { return { type: itemTypes.GETONE_FAILURE, error } }
+}
+
+function getAllItems() {
+    return dispatch => {
+        itemService.getAllItems()
+            .then(items => {
+                dispatch(success(items));
+            },
+            error => {
+                dispatch(failure(error.toString()))
+            })
+    }
+    function success(items) { return { type: itemTypes.GETALL_ITEMS_SUCCESS, items } }
+    function failure(error) { return { type: itemTypes.GETALL_ITEMS_FAILURE, error } }
 }
 
 function getCollections(userId) {
