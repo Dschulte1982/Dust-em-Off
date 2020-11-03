@@ -67,7 +67,7 @@ def getAllItems():
     items = db.session.query(Item).all()
     items_dict = {}
     for item in items:
-        items_dict[item.id] = item.to_dict()
+        items_dict = item.to_dict()
     return {"items": items_dict}, 200
 
 
