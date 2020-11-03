@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request, session, redirect, url_for
+from sqlalchemy.orm import joinedload
 from app.models import User, Category, Collection, Item, db
 
 
@@ -45,6 +46,26 @@ def newCollection(userId):
 def getItem(itemId):
     item = Item.query.filter(Item.id == itemId).first()
     return {"item": str(item.item_name)}
+
+
+@collection_routes.route("item/user/<userId>", methods=["GET"])
+def getUserItems(userId):
+    collections = db.session.query(Collection).filter(Collection.userId == userId).all()
+    collectionIds = []
+    for collection in collections:
+        collectionIds.append(collection.id)
+    all_items = db.session.query(Item).filter(Item.collectionId
+                                              .in_(collectionIds))
+    for item in all_items:
+        print(item.item_name)
+    # items_dict = {}
+    # query = Collection.query.options(joinedload('items'))
+    # for collection in query:
+    #     print(collection.items)
+    # for item in items:
+    #     items_dict[item.id] = item.to_dict()
+    # return {"items": items_dict}, 200
+    return {}
 
 
 @collection_routes.route("item/all", methods=["GET"])

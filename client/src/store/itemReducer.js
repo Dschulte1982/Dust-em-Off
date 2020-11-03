@@ -2,7 +2,6 @@ import { itemTypes } from '../types/collectionTypes';
 
 
 export function itemReducer (state = {}, action) {
-  const newState = Object
     switch (action.type) {
       case itemTypes.GETONE_SUCCESS:
         return {
@@ -10,6 +9,13 @@ export function itemReducer (state = {}, action) {
           item: action.item
         }
       case itemTypes.GETONE_FAILURE:
+        return {};
+      case itemTypes.GETALL_USER_SUCCESS:
+        return {
+          ...state,
+          userItems: action.items
+        };
+      case itemTypes.GETALL_USER_FAILURE:
         return {};
       case itemTypes.GETALL_ITEMS_SUCCESS:
         return {

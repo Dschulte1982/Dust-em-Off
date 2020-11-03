@@ -19,6 +19,9 @@ class User(db.Model):
           "password": self.password,
         }
 
+    def __repr__(self):
+        return self.id
+
 
 class Category(db.Model):
     __tablename__ = 'categories'
@@ -51,6 +54,9 @@ class Collection(db.Model):
           "categoryId": self.categoryId
         }
 
+    # def __repr__(self):
+    #     return self.id
+
 
 class Item(db.Model):
     __tablename__ = 'items'
@@ -63,7 +69,8 @@ class Item(db.Model):
     year = db.Column(db.Integer, nullable=True)
     condition = db.Column(db.String(100), nullable=True)
     image = db.Column(db.Binary, nullable=True)
-    collection = db.relationship("Collection")
+    collection = db.relationship("Collection",
+                                 backref=db.backref("items", lazy=True))
 
     def to_dict(self):
         return {
@@ -76,3 +83,6 @@ class Item(db.Model):
           "condition": self.condition,
           "image": self.image
         }
+
+    def __repr__(self):
+        return '<Item %r>' % {"id": self.id}
