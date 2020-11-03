@@ -19,6 +19,14 @@ export default function ProfilePage() {
       loadCollections();
     }, [dispatch, user.id])
 
+    useEffect(() => {
+      function loadItems() {
+        const userId = user.id
+        dispatch(itemActions.getUserItems(userId))
+      }
+      loadItems();
+    }, [dispatch])
+
     return (
         <>
           <div id="profile-page-master">
@@ -38,9 +46,9 @@ export default function ProfilePage() {
                 <button id="profile-user-follow">Follow +</button>
               </div>
               <div id="profile-user-gallery-container">
-                  <div id="profile-user-gallery-1">{GalleryFrame()}</div>
-                  <div id="profile-user-gallery-2">{GalleryFrame()}</div>
-                  <div id="profile-user-gallery-3">{GalleryFrame()}</div>
+                  <div id="profile-user-gallery-1">{GalleryFrame(1)}</div>
+                  <div id="profile-user-gallery-2">{GalleryFrame(2)}</div>
+                  <div id="profile-user-gallery-3">{GalleryFrame(3)}</div>
               </div>
             </div>
             <div id="profile-categories-container">

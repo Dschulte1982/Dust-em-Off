@@ -8,6 +8,7 @@ export const itemActions = {
     createItem,
     getCollections,
     createCollection,
+    getUserItems,
     getAllItems
 }
 
@@ -16,7 +17,6 @@ function getItem(itemId) {
         itemService.getItem(itemId)
             .then(item => {
                 dispatch(success(item));
-                console.log(item)
             },
             error => {
                 dispatch(failure(error.toString()))
@@ -24,6 +24,20 @@ function getItem(itemId) {
     }
     function success(item) { return { type: itemTypes.GETONE_SUCCESS, item } }
     function failure(error) { return { type: itemTypes.GETONE_FAILURE, error } }
+}
+
+function getUserItems(userId) {
+    return dispatch => {
+        itemService.getUserItems(userId)
+            .then(items => {
+                dispatch(success(items));
+            },
+            error => {
+                dispatch(failure(error.toString()))
+            })
+    }
+    function success(items) { return { type: itemTypes.GETALL_USER_SUCCESS, items } }
+    function failure(error) { return { type: itemTypes.GETALL_USER_FAILURE, error } }
 }
 
 function getAllItems() {
