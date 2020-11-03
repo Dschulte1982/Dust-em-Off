@@ -56,16 +56,10 @@ def getUserItems(userId):
         collectionIds.append(collection.id)
     all_items = db.session.query(Item).filter(Item.collectionId
                                               .in_(collectionIds))
+    items_dict = {}
     for item in all_items:
-        print(item.item_name)
-    # items_dict = {}
-    # query = Collection.query.options(joinedload('items'))
-    # for collection in query:
-    #     print(collection.items)
-    # for item in items:
-    #     items_dict[item.id] = item.to_dict()
-    # return {"items": items_dict}, 200
-    return {}
+        items_dict[item.id] = item.to_dict()
+    return {"userItems": items_dict}, 200
 
 
 @collection_routes.route("item/all", methods=["GET"])
