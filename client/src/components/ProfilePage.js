@@ -25,7 +25,7 @@ export default function ProfilePage() {
         dispatch(itemActions.getUserItems(userId))
       }
       loadItems();
-    }, [dispatch])
+    }, [dispatch, user.id])
 
     return (
         <>
