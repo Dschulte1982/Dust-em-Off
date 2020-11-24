@@ -8,10 +8,6 @@ import ProfilePage from './components/ProfilePage';
 import { itemActions } from './actions/itemActions';
 
 
-// const isLoggedIn = () => {
-//     return localStorage.getItem()
-// }
-
 const protectedRoute = ({ component: Component, loggedIn, ...rest }) => {
     if (loggedIn) return <Route {...rest} component={Component} />;
     else return <Redirect to="/" />;
