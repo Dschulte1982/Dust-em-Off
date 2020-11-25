@@ -17,19 +17,15 @@
 }
 
 #spyglass {
-    height: 48px;
-    width: 48px;
-    padding: 30px 0 0 10px;
+    height: 33px;
+    width: 33px;
+    padding: 35px 0 0 20px;
 }
 
 #search-bar {
     width: 100%;
     height: 100%;
     font-size: 40px;
-    /* border-bottom: 1px solid #454545;
-    border-top: none;
-    border-right: none;
-    border-left: none; */
     border: none;
     outline: none;
     background: transparent;
@@ -40,9 +36,9 @@
     opacity: 50%;
 }
 
-#search-bar::placeholder {
-    /* opacity: 75%; */
-}
+/* #search-bar::placeholder {
+    opacity: 75%;
+} */
 
 #main-search-bar-container {
     margin: 0 10%;
