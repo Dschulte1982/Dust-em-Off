@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/static/css/main.9efcc069.chunk.css",
-    "main.js": "/static/js/main.9b934d6c.chunk.js",
-    "main.js.map": "/static/js/main.9b934d6c.chunk.js.map",
+    "main.css": "/static/css/main.e1b4dbfb.chunk.css",
+    "main.js": "/static/js/main.35a81ff9.chunk.js",
+    "main.js.map": "/static/js/main.35a81ff9.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
     "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
-    "static/js/2.e6800189.chunk.js": "/static/js/2.e6800189.chunk.js",
-    "static/js/2.e6800189.chunk.js.map": "/static/js/2.e6800189.chunk.js.map",
+    "static/js/2.9483f35c.chunk.js": "/static/js/2.9483f35c.chunk.js",
+    "static/js/2.9483f35c.chunk.js.map": "/static/js/2.9483f35c.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.53655680a53247c40c0f97791e91975a.js": "/precache-manifest.53655680a53247c40c0f97791e91975a.js",
+    "precache-manifest.f4907b36f45dd43271715116d72c92e6.js": "/precache-manifest.f4907b36f45dd43271715116d72c92e6.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.9efcc069.chunk.css.map": "/static/css/main.9efcc069.chunk.css.map",
-    "static/js/2.e6800189.chunk.js.LICENSE.txt": "/static/js/2.e6800189.chunk.js.LICENSE.txt",
+    "static/css/main.e1b4dbfb.chunk.css.map": "/static/css/main.e1b4dbfb.chunk.css.map",
+    "static/js/2.9483f35c.chunk.js.LICENSE.txt": "/static/js/2.9483f35c.chunk.js.LICENSE.txt",
     "static/media/comic-header.png": "/static/media/comic-header.4e5a8a79.png",
     "static/media/heart.38e688c7.svg": "/static/media/heart.38e688c7.svg",
-    "static/media/index.css": "/static/media/vector_search_icon.077524fe.svg",
     "static/media/profile_photo_luke_skywalker.png": "/static/media/profile_photo_luke_skywalker.36855576.png",
     "static/media/star_wars_banner.jpg": "/static/media/star_wars_banner.ce97ecfc.jpg",
-    "static/media/upload.22c3a0b1.svg": "/static/media/upload.22c3a0b1.svg"
+    "static/media/upload.22c3a0b1.svg": "/static/media/upload.22c3a0b1.svg",
+    "static/media/index.css": "/static/media/vector_search_icon.077524fe.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.09b85ec0.js",
-    "static/js/2.e6800189.chunk.js",
-    "static/css/main.9efcc069.chunk.css",
-    "static/js/main.9b934d6c.chunk.js"
+    "static/js/2.9483f35c.chunk.js",
+    "static/css/main.e1b4dbfb.chunk.css",
+    "static/js/main.35a81ff9.chunk.js"
   ]
 }
